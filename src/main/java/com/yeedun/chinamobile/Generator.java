@@ -1,4 +1,4 @@
-package com.yeedun.chinamobile;
+﻿package com.yeedun.chinamobile;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +10,8 @@ import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.xml.ConfigurationParser;
 import org.mybatis.generator.exception.XMLParserException;
 import org.mybatis.generator.internal.DefaultShellCallback;
+
+
 
 public class Generator {
 	public static void main(String[] args) {
