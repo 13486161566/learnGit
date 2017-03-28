@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yeedun.chinamobile.dao.MonthlyBillMapper">
+  <resultMap id="monthlyBill" type="com.yeedun.chinamobile.model.MonthlyBill">
+    <result property="id" column="id" />
+    <result property="phone" column="phone" />
+    <result property="queryMonth" column="query_month" />
+    <result property="queryDate" column="query_date" />
+    <result property="isCurrentMonth" column="is_current_month" />
+    <result property="productName" column="product_name" />
+    <result property="balance" column="balance" />
+    <result property="realCost" column="real_cost" />
+    <result property="baseCost" column="base_cost" />
+    <result property="voiceCost" column="voice_cost" />
+    <result property="smsCost" column="sms_cost" />
+    <result property="networkCost" column="network_cost" />
+    <result property="vasCost" column="vas_cost" />
+    <result property="representCost" column="represent_cost" />
+    <result property="repairCost" column="repair_cost" />
+    <result property="favorableCost" column="favorable_cost" />
+    <result property="thirdPartPay" column="third_part_pay" />
+    <result property="otherPay" column="other_pay" />
+    <result property="recharge" column="recharge" />
+    <result property="foreCapitalBack" column="fore_capital_back" />
+    <result property="forePresenterBack" column="fore_presenter_back" />
+    <result property="otherRecharge" column="other_recharge" />
+  </resultMap>
+
+  <sql id="sql_insert_column_list">
+    <trim prefix="" prefixOverrides=",">
+      <if test="entity.id != null">,id</if>
+      <if test="entity.phone != null and entity.phone != ''">,phone</if>
+      <if test="entity.queryMonth != null and entity.queryMonth != ''">,query_month</if>
+      <if test="entity.queryDate != null">,query_date</if>
+      <if test="entity.isCurrentMonth != null">,is_current_month</if>
+      <if test="entity.productName != null and entity.productName != ''">,product_name</if>
+      <if test="entity.balance != null">,balance</if>
+      <if test="entity.realCost != null">,real_cost</if>
+      <if test="entity.baseCost != null">,base_cost</if>
+      <if test="entity.voiceCost != null">,voice_cost</if>
+      <if test="entity.smsCost != null">,sms_cost</if>
+      <if test="entity.networkCost != null">,network_cost</if>
+      <if test="entity.vasCost != null">,vas_cost</if>
+      <if test="entity.representCost != null">,represent_cost</if>
+      <if test="entity.repairCost != null">,repair_cost</if>
+      <if test="entity.favorableCost != null">,favorable_cost</if>
+      <if test="entity.thirdPartPay != null">,third_part_pay</if>
+      <if test="entity.otherPay != null">,other_pay</if>
+      <if test="entity.recharge != null">,recharge</if>
+      <if test="entity.foreCapitalBack != null">,fore_capital_back</if>
+      <if test="entity.forePresenterBack != null">,fore_presenter_back</if>
+      <if test="entity.otherRecharge != null">,other_recharge</if>
+    </trim>
+  </sql>
+
+  <sql id="sql_insert_property_list">
+    <trim prefix="" prefixOverrides=",">
+      <if test="entity.id != null">,#{entity.id}</if>
+      <if test="entity.phone != null and entity.phone != ''">,#{entity.phone}</if>
+      <if test="entity.queryMonth != null and entity.queryMonth != ''">,#{entity.queryMonth}</if>
+      <if test="entity.queryDate != null">,#{entity.queryDate}</if>
+      <if test="entity.isCurrentMonth != null">,#{entity.isCurrentMonth}</if>
+      <if test="entity.productName != null and entity.productName != ''">,#{entity.productName}</if>
+      <if test="entity.balance != null">,#{entity.balance}</if>
+      <if test="entity.realCost != null">,#{entity.realCost}</if>
+      <if test="entity.baseCost != null">,#{entity.baseCost}</if>
+      <if test="entity.voiceCost != null">,#{entity.voiceCost}</if>
+      <if test="entity.smsCost != null">,#{entity.smsCost}</if>
+      <if test="entity.networkCost != null">,#{entity.networkCost}</if>
+      <if test="entity.vasCost != null">,#{entity.vasCost}</if>
+      <if test="entity.representCost != null">,#{entity.representCost}</if>
+      <if test="entity.repairCost != null">,#{entity.repairCost}</if>
+      <if test="entity.favorableCost != null">,#{entity.favorableCost}</if>
+      <if test="entity.thirdPartPay != null">,#{entity.thirdPartPay}</if>
+      <if test="entity.otherPay != null">,#{entity.otherPay}</if>
+      <if test="entity.recharge != null">,#{entity.recharge}</if>
+      <if test="entity.foreCapitalBack != null">,#{entity.foreCapitalBack}</if>
+      <if test="entity.forePresenterBack != null">,#{entity.forePresenterBack}</if>
+      <if test="entity.otherRecharge != null">,#{entity.otherRecharge}</if>
+    </trim>
+  </sql>
+
+  <sql id="sql_column_list">
+    id
+    ,phone
+    ,query_month
+    ,query_date
+    ,is_current_month
+    ,product_name
+    ,balance
+    ,real_cost
+    ,base_cost
+    ,voice_cost
+    ,sms_cost
+    ,network_cost
+    ,vas_cost
+    ,represent_cost
+    ,repair_cost
+    ,favorable_cost
+    ,third_part_pay
+    ,other_pay
+    ,recharge
+    ,fore_capital_back
+    ,fore_presenter_back
+    ,other_recharge
+  </sql>
+  
+  <sql id="sql_column_list_ref">
+    cwl_monthly_bill.id as cwl_monthly_bill_id
+    ,cwl_monthly_bill.phone as cwl_monthly_bill_phone
+    ,cwl_monthly_bill.query_month as cwl_monthly_bill_query_month
+    ,cwl_monthly_bill.query_date as cwl_monthly_bill_query_date
+    ,cwl_monthly_bill.is_current_month as cwl_monthly_bill_is_current_month
+    ,cwl_monthly_bill.product_name as cwl_monthly_bill_product_name
+    ,cwl_monthly_bill.balance as cwl_monthly_bill_balance
+    ,cwl_monthly_bill.real_cost as cwl_monthly_bill_real_cost
+    ,cwl_monthly_bill.base_cost as cwl_monthly_bill_base_cost
+    ,cwl_monthly_bill.voice_cost as cwl_monthly_bill_voice_cost
+    ,cwl_monthly_bill.sms_cost as cwl_monthly_bill_sms_cost
+    ,cwl_monthly_bill.network_cost as cwl_monthly_bill_network_cost
+    ,cwl_monthly_bill.vas_cost as cwl_monthly_bill_vas_cost
+    ,cwl_monthly_bill.represent_cost as cwl_monthly_bill_represent_cost
+    ,cwl_monthly_bill.repair_cost as cwl_monthly_bill_repair_cost
+    ,cwl_monthly_bill.favorable_cost as cwl_monthly_bill_favorable_cost
+    ,cwl_monthly_bill.third_part_pay as cwl_monthly_bill_third_part_pay
+    ,cwl_monthly_bill.other_pay as cwl_monthly_bill_other_pay
+    ,cwl_monthly_bill.recharge as cwl_monthly_bill_recharge
+    ,cwl_monthly_bill.fore_capital_back as cwl_monthly_bill_fore_capital_back
+    ,cwl_monthly_bill.fore_presenter_back as cwl_monthly_bill_fore_presenter_back
+    ,cwl_monthly_bill.other_recharge as cwl_monthly_bill_other_recharge
+  </sql>
+
+  <sql id="sql_update_set">
+    <trim prefix="SET" prefixOverrides=",">
+      <if test="entity != null">
+        <if test="entity.id != null">,id = #{entity.id}</if>
+        <if test="entity.phone != null and entity.phone != ''">,phone = #{entity.phone}</if>
+        <if test="entity.queryMonth != null and entity.queryMonth != ''">,query_month = #{entity.queryMonth}</if>
+        <if test="entity.queryDate != null">,query_date = #{entity.queryDate}</if>
+        <if test="entity.isCurrentMonth != null">,is_current_month = #{entity.isCurrentMonth}</if>
+        <if test="entity.productName != null and entity.productName != ''">,product_name = #{entity.productName}</if>
+        <if test="entity.balance != null">,balance = #{entity.balance}</if>
+        <if test="entity.realCost != null">,real_cost = #{entity.realCost}</if>
+        <if test="entity.baseCost != null">,base_cost = #{entity.baseCost}</if>
+        <if test="entity.voiceCost != null">,voice_cost = #{entity.voiceCost}</if>
+        <if test="entity.smsCost != null">,sms_cost = #{entity.smsCost}</if>
+        <if test="entity.networkCost != null">,network_cost = #{entity.networkCost}</if>
+        <if test="entity.vasCost != null">,vas_cost = #{entity.vasCost}</if>
+        <if test="entity.representCost != null">,represent_cost = #{entity.representCost}</if>
+        <if test="entity.repairCost != null">,repair_cost = #{entity.repairCost}</if>
+        <if test="entity.favorableCost != null">,favorable_cost = #{entity.favorableCost}</if>
+        <if test="entity.thirdPartPay != null">,third_part_pay = #{entity.thirdPartPay}</if>
+        <if test="entity.otherPay != null">,other_pay = #{entity.otherPay}</if>
+        <if test="entity.recharge != null">,recharge = #{entity.recharge}</if>
+        <if test="entity.foreCapitalBack != null">,fore_capital_back = #{entity.foreCapitalBack}</if>
+        <if test="entity.forePresenterBack != null">,fore_presenter_back = #{entity.forePresenterBack}</if>
+        <if test="entity.otherRecharge != null">,other_recharge = #{entity.otherRecharge}</if>
+      </if>
+    </trim>
+  </sql>
+
+  <sql id="sql_force_update_set">
+    <trim prefix="SET" prefixOverrides=",">
+      <if test="_parameter.containsKey('entity_id')">,id = #{entity_id, jdbcType=BIGINT}</if>
+      <if test="_parameter.containsKey('entity_phone')">,phone = #{entity_phone, jdbcType=CHAR}</if>
+      <if test="_parameter.containsKey('entity_queryMonth')">,query_month = #{entity_queryMonth, jdbcType=CHAR}</if>
+      <if test="_parameter.containsKey('entity_queryDate')">,query_date = #{entity_queryDate, jdbcType=DATE}</if>
+      <if test="_parameter.containsKey('entity_isCurrentMonth')">,is_current_month = #{entity_isCurrentMonth, jdbcType=UnknownType[ENUM]}</if>
+      <if test="_parameter.containsKey('entity_productName')">,product_name = #{entity_productName, jdbcType=VARCHAR}</if>
+      <if test="_parameter.containsKey('entity_balance')">,balance = #{entity_balance, jdbcType=DECIMAL}</if>
+      <if test="_parameter.containsKey('entity_realCost')">,real_cost = #{entity_realCost, jdbcType=DECIMAL}</if>
+      <if test="_parameter.containsKey('entity_baseCost')">,base_cost = #{entity_baseCost, jdbcType=DECIMAL}</if>
+      <if test="_parameter.containsKey('entity_voiceCost')">,voice_cost = #{entity_voiceCost, jdbcType=DECIMAL}</if>
+      <if test="_parameter.containsKey('entity_smsCost')">,sms_cost = #{entity_smsCost, jdbcType=DECIMAL}</if>
+      <if test="_parameter.containsKey('entity_networkCost')">,network_cost = #{entity_networkCost, jdbcType=DECIMAL}</if>
+      <if test="_parameter.containsKey('entity_vasCost')">,vas_cost = #{entity_vasCost, jdbcType=DECIMAL}</if>
+      <if test="_parameter.containsKey('entity_representCost')">,represent_cost = #{entity_representCost, jdbcType=DECIMAL}</if>
+      <if test="_parameter.containsKey('entity_repairCost')">,repair_cost = #{entity_repairCost, jdbcType=DECIMAL}</if>
+      <if test="_parameter.containsKey('entity_favorableCost')">,favorable_cost = #{entity_favorableCost, jdbcType=DECIMAL}</if>
+      <if test="_parameter.containsKey('entity_thirdPartPay')">,third_part_pay = #{entity_thirdPartPay, jdbcType=DECIMAL}</if>
+      <if test="_parameter.containsKey('entity_otherPay')">,other_pay = #{entity_otherPay, jdbcType=DECIMAL}</if>
+      <if test="_parameter.containsKey('entity_recharge')">,recharge = #{entity_recharge, jdbcType=DECIMAL}</if>
+      <if test="_parameter.containsKey('entity_foreCapitalBack')">,fore_capital_back = #{entity_foreCapitalBack, jdbcType=DECIMAL}</if>
+      <if test="_parameter.containsKey('entity_forePresenterBack')">,fore_presenter_back = #{entity_forePresenterBack, jdbcType=DECIMAL}</if>
+      <if test="_parameter.containsKey('entity_otherRecharge')">,other_recharge = #{entity_otherRecharge, jdbcType=DECIMAL}</if>
+    </trim>
+  </sql>
+
+  <sql id="sql_condition">
+      <if test="id != null">AND id = #{id}</if>
+      <if test="phone != null and phone != ''">AND phone = #{phone}</if>
+      <if test="queryMonth != null and queryMonth != ''">AND query_month = #{queryMonth}</if>
+      <if test="queryDate != null">AND query_date = #{queryDate}</if>
+      <if test="isCurrentMonth != null">AND is_current_month = #{isCurrentMonth}</if>
+      <if test="productName != null and productName != ''">AND product_name = #{productName}</if>
+      <if test="balance != null">AND balance = #{balance}</if>
+      <if test="realCost != null">AND real_cost = #{realCost}</if>
+      <if test="baseCost != null">AND base_cost = #{baseCost}</if>
+      <if test="voiceCost != null">AND voice_cost = #{voiceCost}</if>
+      <if test="smsCost != null">AND sms_cost = #{smsCost}</if>
+      <if test="networkCost != null">AND network_cost = #{networkCost}</if>
+      <if test="vasCost != null">AND vas_cost = #{vasCost}</if>
+      <if test="representCost != null">AND represent_cost = #{representCost}</if>
+      <if test="repairCost != null">AND repair_cost = #{repairCost}</if>
+      <if test="favorableCost != null">AND favorable_cost = #{favorableCost}</if>
+      <if test="thirdPartPay != null">AND third_part_pay = #{thirdPartPay}</if>
+      <if test="otherPay != null">AND other_pay = #{otherPay}</if>
+      <if test="recharge != null">AND recharge = #{recharge}</if>
+      <if test="foreCapitalBack != null">AND fore_capital_back = #{foreCapitalBack}</if>
+      <if test="forePresenterBack != null">AND fore_presenter_back = #{forePresenterBack}</if>
+      <if test="otherRecharge != null">AND other_recharge = #{otherRecharge}</if>
+  </sql>
+
+  <sql id="sql_pagination_start">
+  <![CDATA[
+  ]]>
+  </sql>
+
+  <sql id="sql_pagination_end">
+  <![CDATA[
+    LIMIT #{offset}, #{limit}
+  ]]>
+  </sql>
+
+  <insert id="extendInsert" parameterType="java.util.Map">
+    <selectKey keyProperty="entity.id" resultType="java.lang.Long" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO cwl_monthly_bill (
+      <include refid="sql_insert_column_list" />
+    ) VALUES (
+      <include refid="sql_insert_property_list" />
+    )
+  </insert>
+
+  <select id="get" parameterType="java.util.Map" resultMap="monthlyBill">
+    SELECT
+      <include refid="sql_column_list" />
+    FROM cwl_monthly_bill
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </select>
+
+  <select id="getById" parameterType="java.util.Map" resultMap="monthlyBill">
+    SELECT
+      <include refid="sql_column_list" />
+    FROM cwl_monthly_bill
+    WHERE id = #{id}
+  </select>
+
+  <select id="find" parameterType="java.util.Map" resultMap="monthlyBill">
+    <if test="offset != null">
+      <include refid="sql_pagination_start" />
+    </if>
+    SELECT
+      <include refid="sql_column_list" />
+    FROM cwl_monthly_bill
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+    <if test="orderBy != null">
+      ORDER BY ${orderBy}
+    </if>
+    <if test="offset != null">
+      <include refid="sql_pagination_end" />
+    </if>
+  </select>
+
+  <select id="findByIdList" parameterType="java.util.Map" resultMap="monthlyBill">
+    SELECT
+      <include refid="sql_column_list" />
+    FROM cwl_monthly_bill
+    WHERE id IN
+    <foreach collection="idList" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+    <include refid="sql_condition" />
+    <if test="orderBy != null">
+      ORDER BY ${orderBy}
+    </if>
+  </select>
+
+  <select id="count" parameterType="java.util.Map" resultType="java.lang.Integer">
+    SELECT count(${count_column}) AS count_ FROM cwl_monthly_bill
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </select>
+
+  <select id="aggregate" parameterType="java.util.Map" resultType="java.util.HashMap">
+    SELECT ${aggregate_sql} FROM cwl_monthly_bill
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </select>
+
+  <update id="update" parameterType="java.util.Map">
+    UPDATE cwl_monthly_bill
+    <include refid="sql_update_set" />
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </update>
+
+  <update id="updateById" parameterType="java.util.Map">
+    UPDATE cwl_monthly_bill
+    <include refid="sql_update_set" />
+    WHERE id = #{id}
+  </update>
+
+  <update id="updateByIdList" parameterType="java.util.Map">
+    UPDATE cwl_monthly_bill
+    <include refid="sql_update_set" />
+    WHERE id IN
+    <foreach collection="idList" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+    <include refid="sql_condition" />
+  </update>
+
+  <update id="forceUpdate" parameterType="java.util.Map">
+    UPDATE cwl_monthly_bill
+    <include refid="sql_force_update_set" />
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </update>
+
+  <update id="forceUpdateById" parameterType="java.util.Map">
+    UPDATE cwl_monthly_bill
+    <include refid="sql_force_update_set" />
+    WHERE id = #{id}
+  </update>
+
+  <update id="forceUpdateByIdList" parameterType="java.util.Map">
+    UPDATE cwl_monthly_bill
+    <include refid="sql_force_update_set" />
+    WHERE id IN
+    <foreach collection="idList" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+    <include refid="sql_condition" />
+  </update>
+
+  <delete id="remove" parameterType="java.util.Map">
+    DELETE FROM cwl_monthly_bill
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </delete>
+
+  <delete id="removeById" parameterType="java.util.Map">
+    DELETE FROM cwl_monthly_bill
+    WHERE id = #{id}
+  </delete>
+
+  <delete id="removeByIdList" parameterType="java.util.Map">
+    DELETE FROM cwl_monthly_bill
+    WHERE id IN
+    <foreach collection="idList" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+    <include refid="sql_condition" />
+  </delete>
+  
+  <insert id="addBatch" useGeneratedKeys="true" parameterType="java.util.List">
+   <selectKey keyProperty="id" resultType="java.lang.Long" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey> 
+    INSERT INTO cwl_monthly_bill (id, phone, query_month, query_date, is_current_month, product_name, balance, real_cost, 
+    base_cost, voice_cost, sms_cost, network_cost, vas_cost, represent_cost, repair_cost, 
+    favorable_cost, third_part_pay, other_pay, recharge, fore_capital_back, fore_presenter_back, 
+    other_recharge)
+     VALUES
+     <foreach collection="list" item="item" index="index" separator="," >
+         (#{item.id,jdbcType=BIGINT}, #{item.phone,jdbcType=CHAR}, #{item.queryMonth,jdbcType=CHAR}, 
+      #{item.queryDate,jdbcType=DATE}, #{item.isCurrentMonth,jdbcType=CHAR}, #{item.productName,jdbcType=VARCHAR}, 
+      #{item.balance,jdbcType=DECIMAL}, #{item.realCost,jdbcType=DECIMAL}, #{item.baseCost,jdbcType=DECIMAL}, 
+      #{item.voiceCost,jdbcType=DECIMAL}, #{item.smsCost,jdbcType=DECIMAL}, #{item.networkCost,jdbcType=DECIMAL}, 
+      #{item.vasCost,jdbcType=DECIMAL}, #{item.representCost,jdbcType=DECIMAL}, #{item.repairCost,jdbcType=DECIMAL}, 
+      #{item.favorableCost,jdbcType=DECIMAL}, #{item.thirdPartPay,jdbcType=DECIMAL}, #{item.otherPay,jdbcType=DECIMAL}, 
+      #{vrecharge,jdbcType=DECIMAL}, #{item.foreCapitalBack,jdbcType=DECIMAL}, #{item.forePresenterBack,jdbcType=DECIMAL}, 
+      #{item.otherRecharge,jdbcType=DECIMAL})
+     </foreach>
+  </insert>
+  
+  <delete id="deleteBatch" parameterType="java.util.Map" >
+  	DELETE FROM 
+    cwl_monthly_bill
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </delete>
+</mapper>

@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yeedun.chinamobile.dao.MonthlyVasDetailMapper">
+  <resultMap id="monthlyVasDetail" type="com.yeedun.chinamobile.model.MonthlyVasDetail">
+    <result property="id" column="id" />
+    <result property="isCerrentMonth" column="is_cerrent_month" />
+    <result property="phone" column="phone" />
+    <result property="queryMonth" column="query_month" />
+    <result property="queryDate" column="query_date" />
+    <result property="vasStartTime" column="vas_start_time" />
+    <result property="vasCostDate" column="vas_cost_date" />
+    <result property="vasProductName" column="vas_product_name" />
+    <result property="vasBusinessCode" column="vas_business_code" />
+    <result property="vasBusinessName" column="vas_business_name" />
+    <result property="vasBusinessType" column="vas_business_type" />
+    <result property="vasCostType" column="vas_cost_type" />
+    <result property="vasFee" column="vas_fee" />
+  </resultMap>
+
+  <sql id="sql_insert_column_list">
+    <trim prefix="" prefixOverrides=",">
+      <if test="entity.id != null">,id</if>
+      <if test="entity.isCerrentMonth != null">,is_cerrent_month</if>
+      <if test="entity.phone != null and entity.phone != ''">,phone</if>
+      <if test="entity.queryMonth != null">,query_month</if>
+      <if test="entity.queryDate != null">,query_date</if>
+      <if test="entity.vasStartTime != null">,vas_start_time</if>
+      <if test="entity.vasCostDate != null">,vas_cost_date</if>
+      <if test="entity.vasProductName != null and entity.vasProductName != ''">,vas_product_name</if>
+      <if test="entity.vasBusinessCode != null and entity.vasBusinessCode != ''">,vas_business_code</if>
+      <if test="entity.vasBusinessName != null and entity.vasBusinessName != ''">,vas_business_name</if>
+      <if test="entity.vasBusinessType != null and entity.vasBusinessType != ''">,vas_business_type</if>
+      <if test="entity.vasCostType != null and entity.vasCostType != ''">,vas_cost_type</if>
+      <if test="entity.vasFee != null">,vas_fee</if>
+    </trim>
+  </sql>
+
+  <sql id="sql_insert_property_list">
+    <trim prefix="" prefixOverrides=",">
+      <if test="entity.id != null">,#{entity.id}</if>
+      <if test="entity.isCerrentMonth != null">,#{entity.isCerrentMonth}</if>
+      <if test="entity.phone != null and entity.phone != ''">,#{entity.phone}</if>
+      <if test="entity.queryMonth != null">,#{entity.queryMonth}</if>
+      <if test="entity.queryDate != null">,#{entity.queryDate}</if>
+      <if test="entity.vasStartTime != null">,#{entity.vasStartTime}</if>
+      <if test="entity.vasCostDate != null and entity.vasCostDate != ''">,#{entity.vasCostDate}</if>
+      <if test="entity.vasProductName != null and entity.vasProductName != ''">,#{entity.vasProductName}</if>
+      <if test="entity.vasBusinessCode != null and entity.vasBusinessCode != ''">,#{entity.vasBusinessCode}</if>
+      <if test="entity.vasBusinessName != null and entity.vasBusinessName != ''">,#{entity.vasBusinessName}</if>
+      <if test="entity.vasBusinessType != null and entity.vasBusinessType != ''">,#{entity.vasBusinessType}</if>
+      <if test="entity.vasCostType != null and entity.vasCostType != ''">,#{entity.vasCostType}</if>
+      <if test="entity.vasFee != null">,#{entity.vasFee}</if>
+    </trim>
+  </sql>
+
+  <sql id="sql_column_list">
+    id
+    ,is_cerrent_month
+    ,phone
+    ,query_month
+    ,query_date
+    ,vas_start_time
+    ,vas_cost_date
+    ,vas_product_name
+    ,vas_business_code
+    ,vas_business_name
+    ,vas_business_type
+    ,vas_cost_type
+    ,vas_fee
+  </sql>
+  
+  <sql id="sql_column_list_ref">
+    cwl_monthly_vas_detail.id as cwl_monthly_vas_detail_id
+    ,cwl_monthly_vas_detail.is_cerrent_month as cwl_monthly_vas_detail_is_cerrent_month
+    ,cwl_monthly_vas_detail.phone as cwl_monthly_vas_detail_phone
+    ,cwl_monthly_vas_detail.query_month as cwl_monthly_vas_detail_query_month
+    ,cwl_monthly_vas_detail.query_date as cwl_monthly_vas_detail_query_date
+    ,cwl_monthly_vas_detail.vas_start_time as cwl_monthly_vas_detail_vas_start_time
+    ,cwl_monthly_vas_detail.vas_cost_date as cwl_monthly_vas_detail_vas_cost_date
+    ,cwl_monthly_vas_detail.vas_product_name as cwl_monthly_vas_detail_vas_product_name
+    ,cwl_monthly_vas_detail.vas_business_code as cwl_monthly_vas_detail_vas_business_code
+    ,cwl_monthly_vas_detail.vas_business_name as cwl_monthly_vas_detail_vas_business_name
+    ,cwl_monthly_vas_detail.vas_business_type as cwl_monthly_vas_detail_vas_business_type
+    ,cwl_monthly_vas_detail.vas_cost_type as cwl_monthly_vas_detail_vas_cost_type
+    ,cwl_monthly_vas_detail.vas_fee as cwl_monthly_vas_detail_vas_fee
+  </sql>
+
+  <sql id="sql_update_set">
+    <trim prefix="SET" prefixOverrides=",">
+      <if test="entity != null">
+        <if test="entity.id != null">,id = #{entity.id}</if>
+        <if test="entity.isCerrentMonth != null">,is_cerrent_month = #{entity.isCerrentMonth}</if>
+        <if test="entity.phone != null and entity.phone != ''">,phone = #{entity.phone}</if>
+        <if test="entity.queryMonth != null">,query_month = #{entity.queryMonth}</if>
+        <if test="entity.queryDate != null">,query_date = #{entity.queryDate}</if>
+        <if test="entity.vasStartTime != null">,vas_start_time = #{entity.vasStartTime}</if>
+        <if test="entity.vasCostDate != null and entity.vasCostDate != ''">,vas_cost_date = #{entity.vasCostDate}</if>
+        <if test="entity.vasProductName != null and entity.vasProductName != ''">,vas_product_name = #{entity.vasProductName}</if>
+        <if test="entity.vasBusinessCode != null and entity.vasBusinessCode != ''">,vas_business_code = #{entity.vasBusinessCode}</if>
+        <if test="entity.vasBusinessName != null and entity.vasBusinessName != ''">,vas_business_name = #{entity.vasBusinessName}</if>
+        <if test="entity.vasBusinessType != null and entity.vasBusinessType != ''">,vas_business_type = #{entity.vasBusinessType}</if>
+        <if test="entity.vasCostType != null and entity.vasCostType != ''">,vas_cost_type = #{entity.vasCostType}</if>
+        <if test="entity.vasFee != null">,vas_fee = #{entity.vasFee}</if>
+      </if>
+    </trim>
+  </sql>
+
+  <sql id="sql_force_update_set">
+    <trim prefix="SET" prefixOverrides=",">
+      <if test="_parameter.containsKey('entity_id')">,id = #{entity_id, jdbcType=BIGINT}</if>
+      <if test="_parameter.containsKey('entity_isCerrentMonth')">,is_cerrent_month = #{entity_isCerrentMonth, jdbcType=UnknownType[ENUM]}</if>
+      <if test="_parameter.containsKey('entity_phone')">,phone = #{entity_phone, jdbcType=CHAR}</if>
+      <if test="_parameter.containsKey('entity_queryMonth')">,query_month = #{entity_queryMonth, jdbcType=CHAR}</if>
+      <if test="_parameter.containsKey('entity_queryDate')">,query_date = #{entity_queryDate, jdbcType=DATE}</if>
+      <if test="_parameter.containsKey('entity_vasStartTime')">,vas_start_time = #{entity_vasStartTime, jdbcType=TIMESTAMP}</if>
+      <if test="_parameter.containsKey('entity_vasCostDate')">,vas_cost_date = #{entity_vasCostDate, jdbcType=VARCHAR}</if>
+      <if test="_parameter.containsKey('entity_vasProductName')">,vas_product_name = #{entity_vasProductName, jdbcType=VARCHAR}</if>
+      <if test="_parameter.containsKey('entity_vasBusinessCode')">,vas_business_code = #{entity_vasBusinessCode, jdbcType=VARCHAR}</if>
+      <if test="_parameter.containsKey('entity_vasBusinessName')">,vas_business_name = #{entity_vasBusinessName, jdbcType=VARCHAR}</if>
+      <if test="_parameter.containsKey('entity_vasBusinessType')">,vas_business_type = #{entity_vasBusinessType, jdbcType=VARCHAR}</if>
+      <if test="_parameter.containsKey('entity_vasCostType')">,vas_cost_type = #{entity_vasCostType, jdbcType=VARCHAR}</if>
+      <if test="_parameter.containsKey('entity_vasFee')">,vas_fee = #{entity_vasFee, jdbcType=DECIMAL}</if>
+    </trim>
+  </sql>
+
+  <sql id="sql_condition">
+      <if test="id != null">AND id = #{id}</if>
+      <if test="isCerrentMonth != null">AND is_cerrent_month = #{isCerrentMonth}</if>
+      <if test="phone != null and phone != ''">AND phone = #{phone}</if>
+      <if test="queryMonth != null">AND query_month = #{queryMonth}</if>
+      <if test="queryDate != null">AND query_date = #{queryDate}</if>
+      <if test="vasStartTime != null">AND vas_start_time = #{vasStartTime}</if>
+      <if test="vasCostDate != null and vasCostDate != ''">AND vas_cost_date = #{vasCostDate}</if>
+      <if test="vasProductName != null and vasProductName != ''">AND vas_product_name = #{vasProductName}</if>
+      <if test="vasBusinessCode != null and vasBusinessCode != ''">AND vas_business_code = #{vasBusinessCode}</if>
+      <if test="vasBusinessName != null and vasBusinessName != ''">AND vas_business_name = #{vasBusinessName}</if>
+      <if test="vasBusinessType != null and vasBusinessType != ''">AND vas_business_type = #{vasBusinessType}</if>
+      <if test="vasCostType != null and vasCostType != ''">AND vas_cost_type = #{vasCostType}</if>
+      <if test="vasFee != null">AND vas_fee = #{vasFee}</if>
+  </sql>
+
+  <sql id="sql_pagination_start">
+  <![CDATA[
+  ]]>
+  </sql>
+
+  <sql id="sql_pagination_end">
+  <![CDATA[
+    LIMIT #{offset}, #{limit}
+  ]]>
+  </sql>
+
+  <insert id="extendInsert" parameterType="java.util.Map">
+    <selectKey keyProperty="entity.id" resultType="java.lang.Long" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO cwl_monthly_vas_detail (
+      <include refid="sql_insert_column_list" />
+    ) VALUES (
+      <include refid="sql_insert_property_list" />
+    )
+  </insert>
+
+  <select id="get" parameterType="java.util.Map" resultMap="monthlyVasDetail">
+    SELECT
+      <include refid="sql_column_list" />
+    FROM cwl_monthly_vas_detail
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </select>
+
+  <select id="getById" parameterType="java.util.Map" resultMap="monthlyVasDetail">
+    SELECT
+      <include refid="sql_column_list" />
+    FROM cwl_monthly_vas_detail
+    WHERE id = #{id}
+  </select>
+
+  <select id="find" parameterType="java.util.Map" resultMap="monthlyVasDetail">
+    <if test="offset != null">
+      <include refid="sql_pagination_start" />
+    </if>
+    SELECT
+      <include refid="sql_column_list" />
+    FROM cwl_monthly_vas_detail
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+    <if test="orderBy != null">
+      ORDER BY ${orderBy}
+    </if>
+    <if test="offset != null">
+      <include refid="sql_pagination_end" />
+    </if>
+  </select>
+
+  <select id="findByIdList" parameterType="java.util.Map" resultMap="monthlyVasDetail">
+    SELECT
+      <include refid="sql_column_list" />
+    FROM cwl_monthly_vas_detail
+    WHERE id IN
+    <foreach collection="idList" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+    <include refid="sql_condition" />
+    <if test="orderBy != null">
+      ORDER BY ${orderBy}
+    </if>
+  </select>
+
+  <select id="count" parameterType="java.util.Map" resultType="java.lang.Integer">
+    SELECT count(${count_column}) AS count_ FROM cwl_monthly_vas_detail
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </select>
+
+  <select id="aggregate" parameterType="java.util.Map" resultType="java.util.HashMap">
+    SELECT ${aggregate_sql} FROM cwl_monthly_vas_detail
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </select>
+
+  <update id="update" parameterType="java.util.Map">
+    UPDATE cwl_monthly_vas_detail
+    <include refid="sql_update_set" />
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </update>
+
+  <update id="updateById" parameterType="java.util.Map">
+    UPDATE cwl_monthly_vas_detail
+    <include refid="sql_update_set" />
+    WHERE id = #{id}
+  </update>
+
+  <update id="updateByIdList" parameterType="java.util.Map">
+    UPDATE cwl_monthly_vas_detail
+    <include refid="sql_update_set" />
+    WHERE id IN
+    <foreach collection="idList" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+    <include refid="sql_condition" />
+  </update>
+
+  <update id="forceUpdate" parameterType="java.util.Map">
+    UPDATE cwl_monthly_vas_detail
+    <include refid="sql_force_update_set" />
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </update>
+
+  <update id="forceUpdateById" parameterType="java.util.Map">
+    UPDATE cwl_monthly_vas_detail
+    <include refid="sql_force_update_set" />
+    WHERE id = #{id}
+  </update>
+
+  <update id="forceUpdateByIdList" parameterType="java.util.Map">
+    UPDATE cwl_monthly_vas_detail
+    <include refid="sql_force_update_set" />
+    WHERE id IN
+    <foreach collection="idList" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+    <include refid="sql_condition" />
+  </update>
+
+  <delete id="remove" parameterType="java.util.Map">
+    DELETE FROM cwl_monthly_vas_detail
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </delete>
+
+  <delete id="removeById" parameterType="java.util.Map">
+    DELETE FROM cwl_monthly_vas_detail
+    WHERE id = #{id}
+  </delete>
+
+  <delete id="removeByIdList" parameterType="java.util.Map">
+    DELETE FROM cwl_monthly_vas_detail
+    WHERE id IN
+    <foreach collection="idList" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+    <include refid="sql_condition" />
+  </delete>
+  
+  <insert id="addBatch" useGeneratedKeys="true" parameterType="java.util.List">
+   <selectKey keyProperty="id" resultType="java.lang.Long" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey> 
+    INSERT INTO cwl_monthly_vas_detail (id, is_cerrent_month, phone, query_month, query_date, vas_start_time, vas_cost_date, 
+    vas_product_name, vas_business_code, vas_business_name, vas_business_type, vas_cost_type, 
+    vas_fee)
+     VALUES
+     <foreach collection="list" item="item" index="index" separator="," >
+         (#{item.id,jdbcType=BIGINT}, #{item.isCerrentMonth,jdbcType=CHAR}, #{item.phone,jdbcType=CHAR}, 
+      #{item.queryMonth,jdbcType=CHAR}, #{item.queryDate,jdbcType=DATE}, #{item.vasStartTime,jdbcType=TIMESTAMP}, 
+      #{item.vasCostDate,jdbcType=VARCHAR}, #{item.vasProductName,jdbcType=VARCHAR}, #{item.vasBusinessCode,jdbcType=VARCHAR}, 
+      #{item.vasBusinessName,jdbcType=VARCHAR}, #{item.vasBusinessType,jdbcType=VARCHAR}, #{item.vasCostType,jdbcType=VARCHAR}, 
+      #{item.vasFee,jdbcType=DECIMAL})
+     </foreach>  
+  </insert>
+  
+  <delete id="deleteBatch" parameterType="java.util.Map" >
+  	DELETE FROM 
+    cwl_monthly_vas_detail
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </delete>
+</mapper>

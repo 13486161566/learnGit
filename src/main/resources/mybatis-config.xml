@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <mappers>
+        <mapper resource="com/yeedun/chinamobile/mapper/extend/UserMapper.xml"/>
+        <mapper resource="com/yeedun/chinamobile/mapper/UserMapper.xml"/>
+        <mapper resource="com/yeedun/chinamobile/mapper/extend/CitiesMapper.xml"/>
+        <mapper resource="com/yeedun/chinamobile/mapper/CitiesMapper.xml"/>
+        <mapper resource="com/yeedun/chinamobile/mapper/extend/ProvincesMapper.xml"/>
+        <mapper resource="com/yeedun/chinamobile/mapper/ProvincesMapper.xml"/>
+        <mapper resource="com/yeedun/chinamobile/mapper/extend/MonthlyVoiceDetailMapper.xml"/>
+        <mapper resource="com/yeedun/chinamobile/mapper/MonthlyVoiceDetailMapper.xml"/>
+        <mapper resource="com/yeedun/chinamobile/mapper/extend/MonthlySmsDetailMapper.xml"/>
+        <mapper resource="com/yeedun/chinamobile/mapper/MonthlySmsDetailMapper.xml"/>
+        <mapper resource="com/yeedun/chinamobile/mapper/extend/MonthlyGprsDetailMapper.xml"/>
+        <mapper resource="com/yeedun/chinamobile/mapper/MonthlyGprsDetailMapper.xml"/>
+        <mapper resource="com/yeedun/chinamobile/mapper/extend/MonthlyVasDetailMapper.xml"/>
+        <mapper resource="com/yeedun/chinamobile/mapper/MonthlyVasDetailMapper.xml"/>
+        <mapper resource="com/yeedun/chinamobile/mapper/extend/MonthlyRechargeDetailMapper.xml"/>
+        <mapper resource="com/yeedun/chinamobile/mapper/MonthlyRechargeDetailMapper.xml"/>
+        <mapper resource="com/yeedun/chinamobile/mapper/extend/MonthlyBillMapper.xml"/>
+        <mapper resource="com/yeedun/chinamobile/mapper/MonthlyBillMapper.xml"/>
+    </mappers>
+</configuration>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yeedun.chinamobile.dao.MonthlyGprsDetailMapper">
+  <resultMap id="BaseResultMap" type="com.yeedun.chinamobile.model.MonthlyGprsDetail">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="is_cerrent_month" jdbcType="CHAR" property="isCerrentMonth" />
+    <result column="phone" jdbcType="CHAR" property="phone" />
+    <result column="query_month" jdbcType="CHAR" property="queryMonth" />
+    <result column="query_date" jdbcType="DATE" property="queryDate" />
+    <result column="gprs_start_time" jdbcType="TIMESTAMP" property="gprsStartTime" />
+    <result column="gprs_business_type" jdbcType="VARCHAR" property="gprsBusinessType" />
+    <result column="gprs_business_name" jdbcType="VARCHAR" property="gprsBusinessName" />
+    <result column="gprs_network_identify" jdbcType="VARCHAR" property="gprsNetworkIdentify" />
+    <result column="gprs_use_area" jdbcType="VARCHAR" property="gprsUseArea" />
+    <result column="gprs_content_length" jdbcType="VARCHAR" property="gprsContentLength" />
+    <result column="gprs_cost_time" jdbcType="VARCHAR" property="gprsCostTime" />
+    <result column="gprs_fee" jdbcType="DECIMAL" property="gprsFee" />
+    <result column="gprs_favorable" jdbcType="VARCHAR" property="gprsFavorable" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, is_cerrent_month, phone, query_month, query_date, gprs_start_time, gprs_business_type, 
+    gprs_business_name, gprs_network_identify, gprs_use_area, gprs_content_length, gprs_cost_time, 
+    gprs_fee, gprs_favorable
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cwl_monthly_gprs_detail
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cwl_monthly_gprs_detail
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yeedun.chinamobile.model.MonthlyGprsDetail">
+    insert into cwl_monthly_gprs_detail (id, is_cerrent_month, phone, 
+      query_month, query_date, gprs_start_time, 
+      gprs_business_type, gprs_business_name, gprs_network_identify, 
+      gprs_use_area, gprs_content_length, gprs_cost_time, 
+      gprs_fee, gprs_favorable)
+    values (#{id,jdbcType=BIGINT}, #{isCerrentMonth,jdbcType=CHAR}, #{phone,jdbcType=CHAR}, 
+      #{queryMonth,jdbcType=CHAR}, #{queryDate,jdbcType=DATE}, #{gprsStartTime,jdbcType=TIMESTAMP}, 
+      #{gprsBusinessType,jdbcType=VARCHAR}, #{gprsBusinessName,jdbcType=VARCHAR}, #{gprsNetworkIdentify,jdbcType=VARCHAR}, 
+      #{gprsUseArea,jdbcType=VARCHAR}, #{gprsContentLength,jdbcType=VARCHAR}, #{gprsCostTime,jdbcType=VARCHAR}, 
+      #{gprsFee,jdbcType=DECIMAL}, #{gprsFavorable,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yeedun.chinamobile.model.MonthlyGprsDetail">
+    insert into cwl_monthly_gprs_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="isCerrentMonth != null">
+        is_cerrent_month,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="queryMonth != null">
+        query_month,
+      </if>
+      <if test="queryDate != null">
+        query_date,
+      </if>
+      <if test="gprsStartTime != null">
+        gprs_start_time,
+      </if>
+      <if test="gprsBusinessType != null">
+        gprs_business_type,
+      </if>
+      <if test="gprsBusinessName != null">
+        gprs_business_name,
+      </if>
+      <if test="gprsNetworkIdentify != null">
+        gprs_network_identify,
+      </if>
+      <if test="gprsUseArea != null">
+        gprs_use_area,
+      </if>
+      <if test="gprsContentLength != null">
+        gprs_content_length,
+      </if>
+      <if test="gprsCostTime != null">
+        gprs_cost_time,
+      </if>
+      <if test="gprsFee != null">
+        gprs_fee,
+      </if>
+      <if test="gprsFavorable != null">
+        gprs_favorable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="isCerrentMonth != null">
+        #{isCerrentMonth,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="queryMonth != null">
+        #{queryMonth,jdbcType=DATE},
+      </if>
+      <if test="queryDate != null">
+        #{queryDate,jdbcType=DATE},
+      </if>
+      <if test="gprsStartTime != null">
+        #{gprsStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gprsBusinessType != null">
+        #{gprsBusinessType,jdbcType=VARCHAR},
+      </if>
+      <if test="gprsBusinessName != null">
+        #{gprsBusinessName,jdbcType=VARCHAR},
+      </if>
+      <if test="gprsNetworkIdentify != null">
+        #{gprsNetworkIdentify,jdbcType=VARCHAR},
+      </if>
+      <if test="gprsUseArea != null">
+        #{gprsUseArea,jdbcType=VARCHAR},
+      </if>
+      <if test="gprsContentLength != null">
+        #{gprsContentLength,jdbcType=VARCHAR},
+      </if>
+      <if test="gprsCostTime != null">
+        #{gprsCostTime,jdbcType=VARCHAR},
+      </if>
+      <if test="gprsFee != null">
+        #{gprsFee,jdbcType=DECIMAL},
+      </if>
+      <if test="gprsFavorable != null">
+        #{gprsFavorable,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yeedun.chinamobile.model.MonthlyGprsDetail">
+    update cwl_monthly_gprs_detail
+    <set>
+      <if test="isCerrentMonth != null">
+        is_cerrent_month = #{isCerrentMonth,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="queryMonth != null">
+        query_month = #{queryMonth,jdbcType=CHAR},
+      </if>
+      <if test="queryDate != null">
+        query_date = #{queryDate,jdbcType=DATE},
+      </if>
+      <if test="gprsStartTime != null">
+        gprs_start_time = #{gprsStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gprsBusinessType != null">
+        gprs_business_type = #{gprsBusinessType,jdbcType=VARCHAR},
+      </if>
+      <if test="gprsBusinessName != null">
+        gprs_business_name = #{gprsBusinessName,jdbcType=VARCHAR},
+      </if>
+      <if test="gprsNetworkIdentify != null">
+        gprs_network_identify = #{gprsNetworkIdentify,jdbcType=VARCHAR},
+      </if>
+      <if test="gprsUseArea != null">
+        gprs_use_area = #{gprsUseArea,jdbcType=VARCHAR},
+      </if>
+      <if test="gprsContentLength != null">
+        gprs_content_length = #{gprsContentLength,jdbcType=VARCHAR},
+      </if>
+      <if test="gprsCostTime != null">
+        gprs_cost_time = #{gprsCostTime,jdbcType=VARCHAR},
+      </if>
+      <if test="gprsFee != null">
+        gprs_fee = #{gprsFee,jdbcType=DECIMAL},
+      </if>
+      <if test="gprsFavorable != null">
+        gprs_favorable = #{gprsFavorable,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

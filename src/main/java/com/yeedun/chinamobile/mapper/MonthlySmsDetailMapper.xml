@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yeedun.chinamobile.dao.MonthlySmsDetailMapper">
+  <resultMap id="BaseResultMap" type="com.yeedun.chinamobile.model.MonthlySmsDetail">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="is_cerrent_month" jdbcType="CHAR" property="isCerrentMonth" />
+    <result column="phone" jdbcType="CHAR" property="phone" />
+    <result column="query_month" jdbcType="CHAR" property="queryMonth" />
+    <result column="query_date" jdbcType="DATE" property="queryDate" />
+    <result column="sms_start_time" jdbcType="TIMESTAMP" property="smsStartTime" />
+    <result column="sms_business_type" jdbcType="VARCHAR" property="smsBusinessType" />
+    <result column="sms_is_driving" jdbcType="CHAR" property="smsIsDriving" />
+    <result column="sms_business_name" jdbcType="VARCHAR" property="smsBusinessName" />
+    <result column="sms_opp_call_num" jdbcType="CHAR" property="smsOppCallNum" />
+    <result column="sms_opp_area" jdbcType="VARCHAR" property="smsOppArea" />
+    <result column="sms_content_length" jdbcType="VARCHAR" property="smsContentLength" />
+    <result column="sms_fee" jdbcType="DECIMAL" property="smsFee" />
+    <result column="sms_favorable" jdbcType="VARCHAR" property="smsFavorable" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, is_cerrent_month, phone, query_month, query_date, sms_start_time, sms_business_type, 
+    sms_is_driving, sms_business_name, sms_opp_call_num, sms_opp_area, sms_content_length, 
+    sms_fee, sms_favorable
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cwl_monthly_sms_detail
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cwl_monthly_sms_detail
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yeedun.chinamobile.model.MonthlySmsDetail">
+    insert into cwl_monthly_sms_detail (id, is_cerrent_month, phone, 
+      query_month, query_date, sms_start_time, 
+      sms_business_type, sms_is_driving, sms_business_name, 
+      sms_opp_call_num, sms_opp_area, sms_content_length, 
+      sms_fee, sms_favorable)
+    values (#{id,jdbcType=BIGINT}, #{isCerrentMonth,jdbcType=CHAR}, #{phone,jdbcType=CHAR}, 
+      #{queryMonth,jdbcType=CHAR}, #{queryDate,jdbcType=DATE}, #{smsStartTime,jdbcType=TIMESTAMP}, 
+      #{smsBusinessType,jdbcType=VARCHAR}, #{smsIsDriving,jdbcType=CHAR}, #{smsBusinessName,jdbcType=VARCHAR}, 
+      #{smsOppCallNum,jdbcType=CHAR}, #{smsOppArea,jdbcType=VARCHAR}, #{smsContentLength,jdbcType=VARCHAR}, 
+      #{smsFee,jdbcType=DECIMAL}, #{smsFavorable,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yeedun.chinamobile.model.MonthlySmsDetail">
+    insert into cwl_monthly_sms_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="isCerrentMonth != null">
+        is_cerrent_month,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="queryMonth != null">
+        query_month,
+      </if>
+      <if test="queryDate != null">
+        query_date,
+      </if>
+      <if test="smsStartTime != null">
+        sms_start_time,
+      </if>
+      <if test="smsBusinessType != null">
+        sms_business_type,
+      </if>
+      <if test="smsIsDriving != null">
+        sms_is_driving,
+      </if>
+      <if test="smsBusinessName != null">
+        sms_business_name,
+      </if>
+      <if test="smsOppCallNum != null">
+        sms_opp_call_num,
+      </if>
+      <if test="smsOppArea != null">
+        sms_opp_area,
+      </if>
+      <if test="smsContentLength != null">
+        sms_content_length,
+      </if>
+      <if test="smsFee != null">
+        sms_fee,
+      </if>
+      <if test="smsFavorable != null">
+        sms_favorable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="isCerrentMonth != null">
+        #{isCerrentMonth,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="queryMonth != null">
+        #{queryMonth,jdbcType=CHAR},
+      </if>
+      <if test="queryDate != null">
+        #{queryDate,jdbcType=DATE},
+      </if>
+      <if test="smsStartTime != null">
+        #{smsStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="smsBusinessType != null">
+        #{smsBusinessType,jdbcType=VARCHAR},
+      </if>
+      <if test="smsIsDriving != null">
+        #{smsIsDriving,jdbcType=CHAR},
+      </if>
+      <if test="smsBusinessName != null">
+        #{smsBusinessName,jdbcType=VARCHAR},
+      </if>
+      <if test="smsOppCallNum != null">
+        #{smsOppCallNum,jdbcType=CHAR},
+      </if>
+      <if test="smsOppArea != null">
+        #{smsOppArea,jdbcType=VARCHAR},
+      </if>
+      <if test="smsContentLength != null">
+        #{smsContentLength,jdbcType=VARCHAR},
+      </if>
+      <if test="smsFee != null">
+        #{smsFee,jdbcType=DECIMAL},
+      </if>
+      <if test="smsFavorable != null">
+        #{smsFavorable,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yeedun.chinamobile.model.MonthlySmsDetail">
+    update cwl_monthly_sms_detail
+    <set>
+      <if test="isCerrentMonth != null">
+        is_cerrent_month = #{isCerrentMonth,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="queryMonth != null">
+        query_month = #{queryMonth,jdbcType=CHAR},
+      </if>
+      <if test="queryDate != null">
+        query_date = #{queryDate,jdbcType=DATE},
+      </if>
+      <if test="smsStartTime != null">
+        sms_start_time = #{smsStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="smsBusinessType != null">
+        sms_business_type = #{smsBusinessType,jdbcType=VARCHAR},
+      </if>
+      <if test="smsIsDriving != null">
+        sms_is_driving = #{smsIsDriving,jdbcType=CHAR},
+      </if>
+      <if test="smsBusinessName != null">
+        sms_business_name = #{smsBusinessName,jdbcType=VARCHAR},
+      </if>
+      <if test="smsOppCallNum != null">
+        sms_opp_call_num = #{smsOppCallNum,jdbcType=CHAR},
+      </if>
+      <if test="smsOppArea != null">
+        sms_opp_area = #{smsOppArea,jdbcType=VARCHAR},
+      </if>
+      <if test="smsContentLength != null">
+        sms_content_length = #{smsContentLength,jdbcType=VARCHAR},
+      </if>
+      <if test="smsFee != null">
+        sms_fee = #{smsFee,jdbcType=DECIMAL},
+      </if>
+      <if test="smsFavorable != null">
+        sms_favorable = #{smsFavorable,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yeedun.chinamobile.model.MonthlySmsDetail">
+    update cwl_monthly_sms_detail
+    set is_cerrent_month = #{isCerrentMonth,jdbcType=CHAR},
+      phone = #{phone,jdbcType=CHAR},
+      query_month = #{queryMonth,jdbcType=CHAR},
+      query_date = #{queryDate,jdbcType=DATE},
+      sms_start_time = #{smsStartTime,jdbcType=TIMESTAMP},
+      sms_business_type = #{smsBusinessType,jdbcType=VARCHAR},
+      sms_is_driving = #{smsIsDriving,jdbcType=CHAR},
+      sms_business_name = #{smsBusinessName,jdbcType=VARCHAR},
+      sms_opp_call_num = #{smsOppCallNum,jdbcType=CHAR},
+      sms_opp_area = #{smsOppArea,jdbcType=VARCHAR},
+      sms_content_length = #{smsContentLength,jdbcType=VARCHAR},
+      sms_fee = #{smsFee,jdbcType=DECIMAL},
+      sms_favorable = #{smsFavorable,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

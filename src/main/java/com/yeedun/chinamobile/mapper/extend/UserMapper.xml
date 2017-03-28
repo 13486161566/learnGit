@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yeedun.chinamobile.dao.UserMapper">
+  <resultMap id="user" type="com.yeedun.chinamobile.model.User">
+    <result property="id" column="id" />
+    <result property="realName" column="real_name" />
+    <result property="phone" column="phone" />
+    <result property="operators" column="operators" />
+    <result property="province" column="province" />
+    <result property="city" column="city" />
+    <result property="password" column="password" />
+    <result property="currentIntegral" column="current_integral" />
+    <result property="currentBalance" column="current_balance" />
+    <result property="currentExpenses" column="current_expenses" />
+    <result property="queryDate" column="query_date" />
+    <result property="addDate" column="add_date" />
+    <result property="productName" column="product_name" />
+  </resultMap>
+
+  <sql id="sql_insert_column_list">
+    <trim prefix="" prefixOverrides=",">
+      <if test="entity.id != null">,id</if>
+      <if test="entity.realName != null and entity.realName != ''">,real_name</if>
+      <if test="entity.phone != null and entity.phone != ''">,phone</if>
+      <if test="entity.operators != null">,operators</if>
+      <if test="entity.province != null and entity.province != ''">,province</if>
+      <if test="entity.city != null and entity.city != ''">,city</if>
+      <if test="entity.password != null and entity.password != ''">,password</if>
+      <if test="entity.currentIntegral != null">,current_integral</if>
+      <if test="entity.currentBalance != null">,current_balance</if>
+      <if test="entity.currentExpenses != null">,current_expenses</if>
+      <if test="entity.queryDate != null">,query_date</if>
+      <if test="entity.addDate != null">,add_date</if>
+      <if test="entity.productName != null and entity.productName != ''">,product_name</if>
+    </trim>
+  </sql>
+
+  <sql id="sql_insert_property_list">
+    <trim prefix="" prefixOverrides=",">
+      <if test="entity.id != null">,#{entity.id}</if>
+      <if test="entity.realName != null and entity.realName != ''">,#{entity.realName}</if>
+      <if test="entity.phone != null and entity.phone != ''">,#{entity.phone}</if>
+      <if test="entity.operators != null">,#{entity.operators}</if>
+      <if test="entity.province != null and entity.province != ''">,#{entity.province}</if>
+      <if test="entity.city != null and entity.city != ''">,#{entity.city}</if>
+      <if test="entity.password != null and entity.password != ''">,#{entity.password}</if>
+      <if test="entity.currentIntegral != null">,#{entity.currentIntegral}</if>
+      <if test="entity.currentBalance != null">,#{entity.currentBalance}</if>
+      <if test="entity.currentExpenses != null">,#{entity.currentExpenses}</if>
+      <if test="entity.queryDate != null">,#{entity.queryDate}</if>
+      <if test="entity.addDate != null">,#{entity.addDate}</if>
+      <if test="entity.productName != null and entity.productName != ''">,#{entity.productName}</if>
+    </trim>
+  </sql>
+
+  <sql id="sql_column_list">
+    id
+    ,real_name
+    ,phone
+    ,operators
+    ,province
+    ,city
+    ,password
+    ,current_integral
+    ,current_balance
+    ,current_expenses
+    ,query_date
+    ,add_date
+    ,product_name
+  </sql>
+  
+  <sql id="sql_column_list_ref">
+    cwl_user.id as cwl_user_id
+    ,cwl_user.real_name as cwl_user_real_name
+    ,cwl_user.phone as cwl_user_phone
+    ,cwl_user.operators as cwl_user_operators
+    ,cwl_user.province as cwl_user_province
+    ,cwl_user.city as cwl_user_city
+    ,cwl_user.password as cwl_user_password
+    ,cwl_user.current_integral as cwl_user_current_integral
+    ,cwl_user.current_balance as cwl_user_current_balance
+    ,cwl_user.current_expenses as cwl_user_current_expenses
+    ,cwl_user.query_date as cwl_user_query_date
+    ,cwl_user.add_date as cwl_user_add_date
+    ,cwl_user.product_name as cwl_user_product_name
+  </sql>
+
+  <sql id="sql_update_set">
+    <trim prefix="SET" prefixOverrides=",">
+      <if test="entity != null">
+        <if test="entity.id != null">,id = #{entity.id}</if>
+        <if test="entity.realName != null and entity.realName != ''">,real_name = #{entity.realName}</if>
+        <if test="entity.phone != null and entity.phone != ''">,phone = #{entity.phone}</if>
+        <if test="entity.operators != null">,operators = #{entity.operators}</if>
+        <if test="entity.province != null and entity.province != ''">,province = #{entity.province}</if>
+        <if test="entity.city != null and entity.city != ''">,city = #{entity.city}</if>
+        <if test="entity.password != null and entity.password != ''">,password = #{entity.password}</if>
+        <if test="entity.currentIntegral != null">,current_integral = #{entity.currentIntegral}</if>
+        <if test="entity.currentBalance != null">,current_balance = #{entity.currentBalance}</if>
+        <if test="entity.currentExpenses != null">,current_expenses = #{entity.currentExpenses}</if>
+        <if test="entity.queryDate != null">,query_date = #{entity.queryDate}</if>
+        <if test="entity.addDate != null">,add_date = #{entity.addDate}</if>
+        <if test="entity.productName != null and entity.productName != ''">,product_name = #{entity.productName}</if>
+      </if>
+    </trim>
+  </sql>
+
+  <sql id="sql_force_update_set">
+    <trim prefix="SET" prefixOverrides=",">
+      <if test="_parameter.containsKey('entity_id')">,id = #{entity_id, jdbcType=INTEGER}</if>
+      <if test="_parameter.containsKey('entity_realName')">,real_name = #{entity_realName, jdbcType=VARCHAR}</if>
+      <if test="_parameter.containsKey('entity_phone')">,phone = #{entity_phone, jdbcType=CHAR}</if>
+      <if test="_parameter.containsKey('entity_operators')">,operators = #{entity_operators, jdbcType=UnknownType[ENUM]}</if>
+      <if test="_parameter.containsKey('entity_province')">,province = #{entity_province, jdbcType=CHAR}</if>
+      <if test="_parameter.containsKey('entity_city')">,city = #{entity_city, jdbcType=CHAR}</if>
+      <if test="_parameter.containsKey('entity_password')">,password = #{entity_password, jdbcType=VARCHAR}</if>
+      <if test="_parameter.containsKey('entity_currentIntegral')">,current_integral = #{entity_currentIntegral, jdbcType=BIGINT}</if>
+      <if test="_parameter.containsKey('entity_currentBalance')">,current_balance = #{entity_currentBalance, jdbcType=DECIMAL}</if>
+      <if test="_parameter.containsKey('entity_currentExpenses')">,current_expenses = #{entity_currentExpenses, jdbcType=DECIMAL}</if>
+      <if test="_parameter.containsKey('entity_queryDate')">,query_date = #{entity_queryDate, jdbcType=TIMESTAMP}</if>
+      <if test="_parameter.containsKey('entity_addDate')">,add_date = #{entity_addDate, jdbcType=TIMESTAMP}</if>
+      <if test="_parameter.containsKey('entity_productName')">,product_name = #{entity_productName, jdbcType=VARCHAR}</if>
+    </trim>
+  </sql>
+
+  <sql id="sql_condition">
+      <if test="id != null">AND id = #{id}</if>
+      <if test="realName != null and realName != ''">AND real_name = #{realName}</if>
+      <if test="phone != null and phone != ''">AND phone = #{phone}</if>
+      <if test="operators != null">AND operators = #{operators}</if>
+      <if test="province != null and province != ''">AND province = #{province}</if>
+      <if test="city != null and city != ''">AND city = #{city}</if>
+      <if test="password != null and password != ''">AND password = #{password}</if>
+      <if test="currentIntegral != null">AND current_integral = #{currentIntegral}</if>
+      <if test="currentBalance != null">AND current_balance = #{currentBalance}</if>
+      <if test="currentExpenses != null">AND current_expenses = #{currentExpenses}</if>
+      <if test="queryDate != null">AND query_date = #{queryDate}</if>
+      <if test="addDate != null">AND add_date = #{addDate}</if>
+      <if test="productName != null and productName != ''">AND product_name = #{productName}</if>
+  </sql>
+
+  <sql id="sql_pagination_start">
+  <![CDATA[
+  ]]>
+  </sql>
+
+  <sql id="sql_pagination_end">
+  <![CDATA[
+    LIMIT #{offset}, #{limit}
+  ]]>
+  </sql>
+
+  <insert id="extendInsert" parameterType="java.util.Map">
+    <selectKey keyProperty="entity.id" resultType="java.lang.Integer" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO cwl_user (
+      <include refid="sql_insert_column_list" />
+    ) VALUES (
+      <include refid="sql_insert_property_list" />
+    )
+  </insert>
+
+  <select id="get" parameterType="java.util.Map" resultMap="user">
+    SELECT
+      <include refid="sql_column_list" />
+    FROM cwl_user
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </select>
+
+  <select id="getById" parameterType="java.util.Map" resultMap="user">
+    SELECT
+      <include refid="sql_column_list" />
+    FROM cwl_user
+    WHERE id = #{id}
+  </select>
+
+  <select id="find" parameterType="java.util.Map" resultMap="user">
+    <if test="offset != null">
+      <include refid="sql_pagination_start" />
+    </if>
+    SELECT
+      <include refid="sql_column_list" />
+    FROM cwl_user
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+    <if test="orderBy != null">
+      ORDER BY ${orderBy}
+    </if>
+    <if test="offset != null">
+      <include refid="sql_pagination_end" />
+    </if>
+  </select>
+
+  <select id="findByIdList" parameterType="java.util.Map" resultMap="user">
+    SELECT
+      <include refid="sql_column_list" />
+    FROM cwl_user
+    WHERE id IN
+    <foreach collection="idList" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+    <include refid="sql_condition" />
+    <if test="orderBy != null">
+      ORDER BY ${orderBy}
+    </if>
+  </select>
+
+  <select id="count" parameterType="java.util.Map" resultType="java.lang.Integer">
+    SELECT count(${count_column}) AS count_ FROM cwl_user
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </select>
+
+  <select id="aggregate" parameterType="java.util.Map" resultType="java.util.HashMap">
+    SELECT ${aggregate_sql} FROM cwl_user
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </select>
+
+  <update id="update" parameterType="java.util.Map">
+    UPDATE cwl_user
+    <include refid="sql_update_set" />
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </update>
+
+  <update id="updateById" parameterType="java.util.Map">
+    UPDATE cwl_user
+    <include refid="sql_update_set" />
+    WHERE id = #{id}
+  </update>
+
+  <update id="updateByIdList" parameterType="java.util.Map">
+    UPDATE cwl_user
+    <include refid="sql_update_set" />
+    WHERE id IN
+    <foreach collection="idList" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+    <include refid="sql_condition" />
+  </update>
+
+  <update id="forceUpdate" parameterType="java.util.Map">
+    UPDATE cwl_user
+    <include refid="sql_force_update_set" />
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </update>
+
+  <update id="forceUpdateById" parameterType="java.util.Map">
+    UPDATE cwl_user
+    <include refid="sql_force_update_set" />
+    WHERE id = #{id}
+  </update>
+
+  <update id="forceUpdateByIdList" parameterType="java.util.Map">
+    UPDATE cwl_user
+    <include refid="sql_force_update_set" />
+    WHERE id IN
+    <foreach collection="idList" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+    <include refid="sql_condition" />
+  </update>
+
+  <delete id="remove" parameterType="java.util.Map">
+    DELETE FROM cwl_user
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </delete>
+
+  <delete id="removeById" parameterType="java.util.Map">
+    DELETE FROM cwl_user
+    WHERE id = #{id}
+  </delete>
+
+  <delete id="removeByIdList" parameterType="java.util.Map">
+    DELETE FROM cwl_user
+    WHERE id IN
+    <foreach collection="idList" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+    <include refid="sql_condition" />
+  </delete>
+</mapper>

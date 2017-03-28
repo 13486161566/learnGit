@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yeedun.chinamobile.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.yeedun.chinamobile.model.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="phone" jdbcType="CHAR" property="phone" />
+    <result column="operators" jdbcType="CHAR" property="operators" />
+    <result column="province" jdbcType="CHAR" property="province" />
+    <result column="city" jdbcType="CHAR" property="city" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="current_integral" jdbcType="INTEGER" property="currentIntegral" />
+    <result column="current_balance" jdbcType="DECIMAL" property="currentBalance" />
+    <result column="current_expenses" jdbcType="DECIMAL" property="currentExpenses" />
+    <result column="query_date" jdbcType="TIMESTAMP" property="queryDate" />
+    <result column="add_date" jdbcType="TIMESTAMP" property="addDate" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, real_name, phone, operators, province, city, password, current_integral, current_balance, 
+    current_expenses, query_date, add_date, product_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cwl_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cwl_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yeedun.chinamobile.model.User">
+    insert into cwl_user (id, real_name, phone, 
+      operators, province, city, password, 
+      current_integral, current_balance, current_expenses, 
+      query_date, add_date, product_name
+      )
+    values (#{id,jdbcType=INTEGER}, #{realName,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR}, 
+      #{operators,jdbcType=CHAR}, #{province,jdbcType=CHAR}, #{city,jdbcType=CHAR}, #{password,jdbcType=VARCHAR}, 
+      #{currentIntegral,jdbcType=INTEGER}, #{currentBalance,jdbcType=DECIMAL}, #{currentExpenses,jdbcType=DECIMAL}, 
+      #{queryDate,jdbcType=TIMESTAMP}, #{addDate,jdbcType=TIMESTAMP}, #{productName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yeedun.chinamobile.model.User">
+    insert into cwl_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="operators != null">
+        operators,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="currentIntegral != null">
+        current_integral,
+      </if>
+      <if test="currentBalance != null">
+        current_balance,
+      </if>
+      <if test="currentExpenses != null">
+        current_expenses,
+      </if>
+      <if test="queryDate != null">
+        query_date,
+      </if>
+      <if test="addDate != null">
+        add_date,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="operators != null">
+        #{operators,jdbcType=CHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=CHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="currentIntegral != null">
+        #{currentIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="currentBalance != null">
+        #{currentBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="currentExpenses != null">
+        #{currentExpenses,jdbcType=DECIMAL},
+      </if>
+      <if test="queryDate != null">
+        #{queryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addDate != null">
+        #{addDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yeedun.chinamobile.model.User">
+    update cwl_user
+    <set>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="operators != null">
+        operators = #{operators,jdbcType=CHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=CHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="currentIntegral != null">
+        current_integral = #{currentIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="currentBalance != null">
+        current_balance = #{currentBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="currentExpenses != null">
+        current_expenses = #{currentExpenses,jdbcType=DECIMAL},
+      </if>
+      <if test="queryDate != null">
+        query_date = #{queryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addDate != null">
+        add_date = #{addDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yeedun.chinamobile.model.User">
+    update cwl_user
+    set real_name = #{realName,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=CHAR},
+      operators = #{operators,jdbcType=CHAR},
+      province = #{province,jdbcType=CHAR},
+      city = #{city,jdbcType=CHAR},
+      password = #{password,jdbcType=VARCHAR},
+      current_integral = #{currentIntegral,jdbcType=INTEGER},
+      current_balance = #{currentBalance,jdbcType=DECIMAL},
+      current_expenses = #{currentExpenses,jdbcType=DECIMAL},
+      query_date = #{queryDate,jdbcType=TIMESTAMP},
+      add_date = #{addDate,jdbcType=TIMESTAMP},
+      product_name = #{productName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

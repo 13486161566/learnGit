@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yeedun.chinamobile.dao.MonthlySmsDetailMapper">
+  <resultMap id="monthlySmsDetail" type="com.yeedun.chinamobile.model.MonthlySmsDetail">
+    <result property="id" column="id" />
+    <result property="isCerrentMonth" column="is_cerrent_month" />
+    <result property="phone" column="phone" />
+    <result property="queryMonth" column="query_month" />
+    <result property="queryDate" column="query_date" />
+    <result property="smsStartTime" column="sms_start_time" />
+    <result property="smsBusinessType" column="sms_business_type" />
+    <result property="smsIsDriving" column="sms_is_driving" />
+    <result property="smsBusinessName" column="sms_business_name" />
+    <result property="smsOppCallNum" column="sms_opp_call_num" />
+    <result property="smsOppArea" column="sms_opp_area" />
+    <result property="smscontent_length" column="sms_content_length" />
+    <result property="smsFee" column="sms_fee" />
+    <result property="smsFavorable" column="sms_favorable" />
+  </resultMap>
+
+  <sql id="sql_insert_column_list">
+    <trim prefix="" prefixOverrides=",">
+      <if test="entity.id != null">,id</if>
+      <if test="entity.isCerrentMonth != null">,is_cerrent_month</if>
+      <if test="entity.phone != null and entity.phone != ''">,phone</if>
+      <if test="entity.queryMonth != null and entity.queryMonth != ''">,query_month</if>
+      <if test="entity.queryDate != null">,query_date</if>
+      <if test="entity.smsStartTime != null">,sms_start_time</if>
+      <if test="entity.smsBusinessType != null and entity.smsBusinessType != ''">,sms_business_type</if>
+      <if test="entity.smsIsDriving != null">,sms_is_driving</if>
+      <if test="entity.smsBusinessName != null and entity.smsBusinessName != ''">,sms_business_name</if>
+      <if test="entity.smsOppCallNum != null and entity.smsOppCallNum != ''">,sms_opp_call_num</if>
+      <if test="entity.smsOppArea != null and entity.smsOppArea != ''">,sms_opp_area</if>
+      <if test="entity.smscontent_length != null and entity.smscontent_length != ''">,sms_content_length</if>
+      <if test="entity.smsFee != null">,sms_fee</if>
+      <if test="entity.smsFavorable != null and entity.smsFavorable != ''">,sms_favorable</if>
+    </trim>
+  </sql>
+
+  <sql id="sql_insert_property_list">
+    <trim prefix="" prefixOverrides=",">
+      <if test="entity.id != null">,#{entity.id}</if>
+      <if test="entity.isCerrentMonth != null">,#{entity.isCerrentMonth}</if>
+      <if test="entity.phone != null and entity.phone != ''">,#{entity.phone}</if>
+      <if test="entity.queryMonth != null and entity.queryMonth != ''">,#{entity.queryMonth}</if>
+      <if test="entity.queryDate != null">,#{entity.queryDate}</if>
+      <if test="entity.smsStartTime != null">,#{entity.smsStartTime}</if>
+      <if test="entity.smsBusinessType != null and entity.smsBusinessType != ''">,#{entity.smsBusinessType}</if>
+      <if test="entity.smsIsDriving != null">,#{entity.smsIsDriving}</if>
+      <if test="entity.smsBusinessName != null and entity.smsBusinessName != ''">,#{entity.smsBusinessName}</if>
+      <if test="entity.smsOppCallNum != null and entity.smsOppCallNum != ''">,#{entity.smsOppCallNum}</if>
+      <if test="entity.smsOppArea != null and entity.smsOppArea != ''">,#{entity.smsOppArea}</if>
+      <if test="entity.smscontent_length != null and entity.smscontent_length != ''">,#{entity.smscontent_length}</if>
+      <if test="entity.smsFee != null">,#{entity.smsFee}</if>
+      <if test="entity.smsFavorable != null and entity.smsFavorable != ''">,#{entity.smsFavorable}</if>
+    </trim>
+  </sql>
+
+  <sql id="sql_column_list">
+    id
+    ,is_cerrent_month
+    ,phone
+    ,query_month
+    ,query_date
+    ,sms_start_time
+    ,sms_business_type
+    ,sms_is_driving
+    ,sms_business_name
+    ,sms_opp_call_num
+    ,sms_opp_area
+    ,sms_content_length
+    ,sms_fee
+    ,sms_favorable
+  </sql>
+  
+  <sql id="sql_column_list_ref">
+    cwl_monthly_sms_detail.id as cwl_monthly_sms_detail_id
+    ,cwl_monthly_sms_detail.is_cerrent_month as cwl_monthly_sms_detail_is_cerrent_month
+    ,cwl_monthly_sms_detail.phone as cwl_monthly_sms_detail_phone
+    ,cwl_monthly_sms_detail.query_month as cwl_monthly_sms_detail_query_month
+    ,cwl_monthly_sms_detail.query_date as cwl_monthly_sms_detail_query_date
+    ,cwl_monthly_sms_detail.sms_start_time as cwl_monthly_sms_detail_sms_start_time
+    ,cwl_monthly_sms_detail.sms_business_type as cwl_monthly_sms_detail_sms_business_type
+    ,cwl_monthly_sms_detail.sms_is_driving as cwl_monthly_sms_detail_sms_is_driving
+    ,cwl_monthly_sms_detail.sms_business_name as cwl_monthly_sms_detail_sms_business_name
+    ,cwl_monthly_sms_detail.sms_opp_call_num as cwl_monthly_sms_detail_sms_opp_call_num
+    ,cwl_monthly_sms_detail.sms_opp_area as cwl_monthly_sms_detail_sms_opp_area
+    ,cwl_monthly_sms_detail.sms_content_length as cwl_monthly_sms_detail_sms_content_length
+    ,cwl_monthly_sms_detail.sms_fee as cwl_monthly_sms_detail_sms_fee
+    ,cwl_monthly_sms_detail.sms_favorable as cwl_monthly_sms_detail_sms_favorable
+  </sql>
+
+  <sql id="sql_update_set">
+    <trim prefix="SET" prefixOverrides=",">
+      <if test="entity != null">
+        <if test="entity.id != null">,id = #{entity.id}</if>
+        <if test="entity.isCerrentMonth != null">,is_cerrent_month = #{entity.isCerrentMonth}</if>
+        <if test="entity.phone != null and entity.phone != ''">,phone = #{entity.phone}</if>
+        <if test="entity.queryMonth != null and entity.queryMonth != ''">,query_month = #{entity.queryMonth}</if>
+        <if test="entity.queryDate != null">,query_date = #{entity.queryDate}</if>
+        <if test="entity.smsStartTime != null">,sms_start_time = #{entity.smsStartTime}</if>
+        <if test="entity.smsBusinessType != null and entity.smsBusinessType != ''">,sms_business_type = #{entity.smsBusinessType}</if>
+        <if test="entity.smsIsDriving != null">,sms_is_driving = #{entity.smsIsDriving}</if>
+        <if test="entity.smsBusinessName != null and entity.smsBusinessName != ''">,sms_business_name = #{entity.smsBusinessName}</if>
+        <if test="entity.smsOppCallNum != null and entity.smsOppCallNum != ''">,sms_opp_call_num = #{entity.smsOppCallNum}</if>
+        <if test="entity.smsOppArea != null and entity.smsOppArea != ''">,sms_opp_area = #{entity.smsOppArea}</if>
+        <if test="entity.smscontent_length != null and entity.smscontent_length != ''">,sms_content_length = #{entity.smscontent_length}</if>
+        <if test="entity.smsFee != null">,sms_fee = #{entity.smsFee}</if>
+        <if test="entity.smsFavorable != null and entity.smsFavorable != ''">,sms_favorable = #{entity.smsFavorable}</if>
+      </if>
+    </trim>
+  </sql>
+
+  <sql id="sql_force_update_set">
+    <trim prefix="SET" prefixOverrides=",">
+      <if test="_parameter.containsKey('entity_id')">,id = #{entity_id, jdbcType=BIGINT}</if>
+      <if test="_parameter.containsKey('entity_isCerrentMonth')">,is_cerrent_month = #{entity_isCerrentMonth, jdbcType=UnknownType[ENUM]}</if>
+      <if test="_parameter.containsKey('entity_phone')">,phone = #{entity_phone, jdbcType=CHAR}</if>
+      <if test="_parameter.containsKey('entity_queryMonth')">,query_month = #{entity_queryMonth, jdbcType=CHAR}</if>
+      <if test="_parameter.containsKey('entity_queryDate')">,query_date = #{entity_queryDate, jdbcType=DATE}</if>
+      <if test="_parameter.containsKey('entity_smsStartTime')">,sms_start_time = #{entity_smsStartTime, jdbcType=TIMESTAMP}</if>
+      <if test="_parameter.containsKey('entity_smsBusinessType')">,sms_business_type = #{entity_smsBusinessType, jdbcType=VARCHAR}</if>
+      <if test="_parameter.containsKey('entity_smsIsDriving')">,sms_is_driving = #{entity_smsIsDriving, jdbcType=UnknownType[ENUM]}</if>
+      <if test="_parameter.containsKey('entity_smsBusinessName')">,sms_business_name = #{entity_smsBusinessName, jdbcType=VARCHAR}</if>
+      <if test="_parameter.containsKey('entity_smsOppCallNum')">,sms_opp_call_num = #{entity_smsOppCallNum, jdbcType=CHAR}</if>
+      <if test="_parameter.containsKey('entity_smsOppArea')">,sms_opp_area = #{entity_smsOppArea, jdbcType=VARCHAR}</if>
+      <if test="_parameter.containsKey('entity_smscontent_length')">,sms_content_length = #{entity_smscontent_length, jdbcType=VARCHAR}</if>
+      <if test="_parameter.containsKey('entity_smsFee')">,sms_fee = #{entity_smsFee, jdbcType=DECIMAL}</if>
+      <if test="_parameter.containsKey('entity_smsFavorable')">,sms_favorable = #{entity_smsFavorable, jdbcType=VARCHAR}</if>
+    </trim>
+  </sql>
+
+  <sql id="sql_condition">
+      <if test="id != null">AND id = #{id}</if>
+      <if test="isCerrentMonth != null">AND is_cerrent_month = #{isCerrentMonth}</if>
+      <if test="phone != null and phone != ''">AND phone = #{phone}</if>
+      <if test="queryMonth != null and queryMonth != ''">AND query_month = #{queryMonth}</if>
+      <if test="queryDate != null">AND query_date = #{queryDate}</if>
+      <if test="smsStartTime != null">AND sms_start_time = #{smsStartTime}</if>
+      <if test="smsBusinessType != null and smsBusinessType != ''">AND sms_business_type = #{smsBusinessType}</if>
+      <if test="smsIsDriving != null">AND sms_is_driving = #{smsIsDriving}</if>
+      <if test="smsBusinessName != null and smsBusinessName != ''">AND sms_business_name = #{smsBusinessName}</if>
+      <if test="smsOppCallNum != null and smsOppCallNum != ''">AND sms_opp_call_num = #{smsOppCallNum}</if>
+      <if test="smsOppArea != null and smsOppArea != ''">AND sms_opp_area = #{smsOppArea}</if>
+      <if test="smscontent_length != null and smscontent_length != ''">AND sms_content_length = #{smscontent_length}</if>
+      <if test="smsFee != null">AND sms_fee = #{smsFee}</if>
+      <if test="smsFavorable != null and smsFavorable != ''">AND sms_favorable = #{smsFavorable}</if>
+  </sql>
+
+  <sql id="sql_pagination_start">
+  <![CDATA[
+  ]]>
+  </sql>
+
+  <sql id="sql_pagination_end">
+  <![CDATA[
+    LIMIT #{offset}, #{limit}
+  ]]>
+  </sql>
+
+  <insert id="extendInsert" parameterType="java.util.Map">
+    <selectKey keyProperty="entity.id" resultType="java.lang.Long" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO cwl_monthly_sms_detail (
+      <include refid="sql_insert_column_list" />
+    ) VALUES (
+      <include refid="sql_insert_property_list" />
+    )
+  </insert>
+
+  <select id="get" parameterType="java.util.Map" resultMap="monthlySmsDetail">
+    SELECT
+      <include refid="sql_column_list" />
+    FROM cwl_monthly_sms_detail
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </select>
+
+  <select id="getById" parameterType="java.util.Map" resultMap="monthlySmsDetail">
+    SELECT
+      <include refid="sql_column_list" />
+    FROM cwl_monthly_sms_detail
+    WHERE id = #{id}
+  </select>
+
+  <select id="find" parameterType="java.util.Map" resultMap="monthlySmsDetail">
+    <if test="offset != null">
+      <include refid="sql_pagination_start" />
+    </if>
+    SELECT
+      <include refid="sql_column_list" />
+    FROM cwl_monthly_sms_detail
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+    <if test="orderBy != null">
+      ORDER BY ${orderBy}
+    </if>
+    <if test="offset != null">
+      <include refid="sql_pagination_end" />
+    </if>
+  </select>
+
+  <select id="findByIdList" parameterType="java.util.Map" resultMap="monthlySmsDetail">
+    SELECT
+      <include refid="sql_column_list" />
+    FROM cwl_monthly_sms_detail
+    WHERE id IN
+    <foreach collection="idList" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+    <include refid="sql_condition" />
+    <if test="orderBy != null">
+      ORDER BY ${orderBy}
+    </if>
+  </select>
+
+  <select id="count" parameterType="java.util.Map" resultType="java.lang.Integer">
+    SELECT count(${count_column}) AS count_ FROM cwl_monthly_sms_detail
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </select>
+
+  <select id="aggregate" parameterType="java.util.Map" resultType="java.util.HashMap">
+    SELECT ${aggregate_sql} FROM cwl_monthly_sms_detail
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </select>
+
+  <update id="update" parameterType="java.util.Map">
+    UPDATE cwl_monthly_sms_detail
+    <include refid="sql_update_set" />
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </update>
+
+  <update id="updateById" parameterType="java.util.Map">
+    UPDATE cwl_monthly_sms_detail
+    <include refid="sql_update_set" />
+    WHERE id = #{id}
+  </update>
+
+  <update id="updateByIdList" parameterType="java.util.Map">
+    UPDATE cwl_monthly_sms_detail
+    <include refid="sql_update_set" />
+    WHERE id IN
+    <foreach collection="idList" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+    <include refid="sql_condition" />
+  </update>
+
+  <update id="forceUpdate" parameterType="java.util.Map">
+    UPDATE cwl_monthly_sms_detail
+    <include refid="sql_force_update_set" />
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </update>
+
+  <update id="forceUpdateById" parameterType="java.util.Map">
+    UPDATE cwl_monthly_sms_detail
+    <include refid="sql_force_update_set" />
+    WHERE id = #{id}
+  </update>
+
+  <update id="forceUpdateByIdList" parameterType="java.util.Map">
+    UPDATE cwl_monthly_sms_detail
+    <include refid="sql_force_update_set" />
+    WHERE id IN
+    <foreach collection="idList" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+    <include refid="sql_condition" />
+  </update>
+
+  <delete id="remove" parameterType="java.util.Map">
+    DELETE FROM cwl_monthly_sms_detail
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </delete>
+
+  <delete id="removeById" parameterType="java.util.Map">
+    DELETE FROM cwl_monthly_sms_detail
+    WHERE id = #{id}
+  </delete>
+
+  <delete id="removeByIdList" parameterType="java.util.Map">
+    DELETE FROM cwl_monthly_sms_detail
+    WHERE id IN
+    <foreach collection="idList" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+    <include refid="sql_condition" />
+  </delete>
+  
+ <insert id="addBatch" useGeneratedKeys="true" parameterType="java.util.List">
+   <selectKey keyProperty="id" resultType="java.lang.Long" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey> 
+    INSERT INTO cwl_monthly_sms_detail (id, is_cerrent_month, phone, query_month, query_date, sms_start_time, sms_business_type, 
+    sms_is_driving, sms_business_name, sms_opp_call_num, sms_opp_area, sms_content_length, sms_fee, sms_favorable)
+     VALUES
+     <foreach collection="list" item="item" index="index" separator="," >
+         (#{item.id,jdbcType=BIGINT}, #{item.isCerrentMonth,jdbcType=CHAR}, #{item.phone,jdbcType=CHAR}, 
+      #{item.queryMonth,jdbcType=CHAR}, #{item.queryDate,jdbcType=DATE}, #{item.smsStartTime,jdbcType=TIMESTAMP}, 
+      #{item.smsBusinessType,jdbcType=VARCHAR}, #{item.smsIsDriving,jdbcType=CHAR}, #{item.smsBusinessName,jdbcType=VARCHAR}, 
+      #{item.smsOppCallNum,jdbcType=CHAR}, #{item.smsOppArea,jdbcType=VARCHAR}, #{item.smsContentLength,jdbcType=VARCHAR}, 
+      #{item.smsFee,jdbcType=DECIMAL}, #{item.smsFavorable,jdbcType=VARCHAR})
+     </foreach>  
+  </insert>
+  
+  <delete id="deleteBatch" parameterType="java.util.Map" >
+  	DELETE FROM 
+    cwl_monthly_sms_detail
+    <trim prefix="WHERE" prefixOverrides="AND">
+      <include refid="sql_condition" />
+    </trim>
+  </delete>
+</mapper>

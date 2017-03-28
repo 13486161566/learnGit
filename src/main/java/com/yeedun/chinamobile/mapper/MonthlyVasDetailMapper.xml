@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yeedun.chinamobile.dao.MonthlyVasDetailMapper">
+  <resultMap id="BaseResultMap" type="com.yeedun.chinamobile.model.MonthlyVasDetail">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="is_cerrent_month" jdbcType="CHAR" property="isCerrentMonth" />
+    <result column="phone" jdbcType="CHAR" property="phone" />
+    <result column="query_month" jdbcType="CHAR" property="queryMonth" />
+    <result column="query_date" jdbcType="DATE" property="queryDate" />
+    <result column="vas_start_time" jdbcType="TIMESTAMP" property="vasStartTime" />
+    <result column="vas_cost_date" jdbcType="VARCHAR" property="vasCostDate" />
+    <result column="vas_product_name" jdbcType="VARCHAR" property="vasProductName" />
+    <result column="vas_business_code" jdbcType="VARCHAR" property="vasBusinessCode" />
+    <result column="vas_business_name" jdbcType="VARCHAR" property="vasBusinessName" />
+    <result column="vas_business_type" jdbcType="VARCHAR" property="vasBusinessType" />
+    <result column="vas_cost_type" jdbcType="VARCHAR" property="vasCostType" />
+    <result column="vas_fee" jdbcType="DECIMAL" property="vasFee" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, is_cerrent_month, phone, query_month, query_date, vas_start_time, vas_cost_date, 
+    vas_product_name, vas_business_code, vas_business_name, vas_business_type, vas_cost_type, 
+    vas_fee
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cwl_monthly_vas_detail
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cwl_monthly_vas_detail
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yeedun.chinamobile.model.MonthlyVasDetail">
+    insert into cwl_monthly_vas_detail (id, is_cerrent_month, phone, 
+      query_month, query_date, vas_start_time, 
+      vas_cost_date, vas_product_name, vas_business_code, 
+      vas_business_name, vas_business_type, vas_cost_type, 
+      vas_fee)
+    values (#{id,jdbcType=BIGINT}, #{isCerrentMonth,jdbcType=CHAR}, #{phone,jdbcType=CHAR}, 
+      #{queryMonth,jdbcType=CHAR}, #{queryDate,jdbcType=DATE}, #{vasStartTime,jdbcType=TIMESTAMP}, 
+      #{vasCostDate,jdbcType=VARCHAR}, #{vasProductName,jdbcType=VARCHAR}, #{vasBusinessCode,jdbcType=VARCHAR}, 
+      #{vasBusinessName,jdbcType=VARCHAR}, #{vasBusinessType,jdbcType=VARCHAR}, #{vasCostType,jdbcType=VARCHAR}, 
+      #{vasFee,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yeedun.chinamobile.model.MonthlyVasDetail">
+    insert into cwl_monthly_vas_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="isCerrentMonth != null">
+        is_cerrent_month,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="queryMonth != null">
+        query_month,
+      </if>
+      <if test="queryDate != null">
+        query_date,
+      </if>
+      <if test="vasStartTime != null">
+        vas_start_time,
+      </if>
+      <if test="vasCostDate != null">
+        vas_cost_date,
+      </if>
+      <if test="vasProductName != null">
+        vas_product_name,
+      </if>
+      <if test="vasBusinessCode != null">
+        vas_business_code,
+      </if>
+      <if test="vasBusinessName != null">
+        vas_business_name,
+      </if>
+      <if test="vasBusinessType != null">
+        vas_business_type,
+      </if>
+      <if test="vasCostType != null">
+        vas_cost_type,
+      </if>
+      <if test="vasFee != null">
+        vas_fee,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="isCerrentMonth != null">
+        #{isCerrentMonth,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="queryMonth != null">
+        #{queryMonth,jdbcType=CHAR},
+      </if>
+      <if test="queryDate != null">
+        #{queryDate,jdbcType=DATE},
+      </if>
+      <if test="vasStartTime != null">
+        #{vasStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vasCostDate != null">
+        #{vasCostDate,jdbcType=VARCHAR},
+      </if>
+      <if test="vasProductName != null">
+        #{vasProductName,jdbcType=VARCHAR},
+      </if>
+      <if test="vasBusinessCode != null">
+        #{vasBusinessCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vasBusinessName != null">
+        #{vasBusinessName,jdbcType=VARCHAR},
+      </if>
+      <if test="vasBusinessType != null">
+        #{vasBusinessType,jdbcType=VARCHAR},
+      </if>
+      <if test="vasCostType != null">
+        #{vasCostType,jdbcType=VARCHAR},
+      </if>
+      <if test="vasFee != null">
+        #{vasFee,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yeedun.chinamobile.model.MonthlyVasDetail">
+    update cwl_monthly_vas_detail
+    <set>
+      <if test="isCerrentMonth != null">
+        is_cerrent_month = #{isCerrentMonth,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="queryMonth != null">
+        query_month = #{queryMonth,jdbcType=CHAR},
+      </if>
+      <if test="queryDate != null">
+        query_date = #{queryDate,jdbcType=DATE},
+      </if>
+      <if test="vasStartTime != null">
+        vas_start_time = #{vasStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vasCostDate != null">
+        vas_cost_date = #{vasCostDate,jdbcType=VARCHAR},
+      </if>
+      <if test="vasProductName != null">
+        vas_product_name = #{vasProductName,jdbcType=VARCHAR},
+      </if>
+      <if test="vasBusinessCode != null">
+        vas_business_code = #{vasBusinessCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vasBusinessName != null">
+        vas_business_name = #{vasBusinessName,jdbcType=VARCHAR},
+      </if>
+      <if test="vasBusinessType != null">
+        vas_business_type = #{vasBusinessType,jdbcType=VARCHAR},
+      </if>
+      <if test="vasCostType != null">
+        vas_cost_type = #{vasCostType,jdbcType=VARCHAR},
+      </if>
+      <if test="vasFee != null">
+        vas_fee = #{vasFee,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yeedun.chinamobile.model.MonthlyVasDetail">
+    update cwl_monthly_vas_detail
+    set is_cerrent_month = #{isCerrentMonth,jdbcType=CHAR},
+      phone = #{phone,jdbcType=CHAR},
+      query_month = #{queryMonth,jdbcType=DATE},
+      query_date = #{queryDate,jdbcType=DATE},
+      vas_start_time = #{vasStartTime,jdbcType=TIMESTAMP},
+      vas_cost_date = #{vasCostDate,jdbcType=VARCHAR},
+      vas_product_name = #{vasProductName,jdbcType=VARCHAR},
+      vas_business_code = #{vasBusinessCode,jdbcType=VARCHAR},
+      vas_business_name = #{vasBusinessName,jdbcType=VARCHAR},
+      vas_business_type = #{vasBusinessType,jdbcType=VARCHAR},
+      vas_cost_type = #{vasCostType,jdbcType=VARCHAR},
+      vas_fee = #{vasFee,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yeedun.chinamobile.dao.MonthlyBillMapper">
+  <resultMap id="BaseResultMap" type="com.yeedun.chinamobile.model.MonthlyBill">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="phone" jdbcType="CHAR" property="phone" />
+    <result column="query_month" jdbcType="CHAR" property="queryMonth" />
+    <result column="query_date" jdbcType="DATE" property="queryDate" />
+    <result column="is_current_month" jdbcType="CHAR" property="isCurrentMonth" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
+    <result column="real_cost" jdbcType="DECIMAL" property="realCost" />
+    <result column="base_cost" jdbcType="DECIMAL" property="baseCost" />
+    <result column="voice_cost" jdbcType="DECIMAL" property="voiceCost" />
+    <result column="sms_cost" jdbcType="DECIMAL" property="smsCost" />
+    <result column="network_cost" jdbcType="DECIMAL" property="networkCost" />
+    <result column="vas_cost" jdbcType="DECIMAL" property="vasCost" />
+    <result column="represent_cost" jdbcType="DECIMAL" property="representCost" />
+    <result column="repair_cost" jdbcType="DECIMAL" property="repairCost" />
+    <result column="favorable_cost" jdbcType="DECIMAL" property="favorableCost" />
+    <result column="third_part_pay" jdbcType="DECIMAL" property="thirdPartPay" />
+    <result column="other_pay" jdbcType="DECIMAL" property="otherPay" />
+    <result column="recharge" jdbcType="DECIMAL" property="recharge" />
+    <result column="fore_capital_back" jdbcType="DECIMAL" property="foreCapitalBack" />
+    <result column="fore_presenter_back" jdbcType="DECIMAL" property="forePresenterBack" />
+    <result column="other_recharge" jdbcType="DECIMAL" property="otherRecharge" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, phone, query_month, query_date, is_current_month, product_name, balance, real_cost, 
+    base_cost, voice_cost, sms_cost, network_cost, vas_cost, represent_cost, repair_cost, 
+    favorable_cost, third_part_pay, other_pay, recharge, fore_capital_back, fore_presenter_back, 
+    other_recharge
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cwl_monthly_bill
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cwl_monthly_bill
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" parameterType="com.yeedun.chinamobile.model.MonthlyBill">
+  	<selectKey keyProperty="id" resultType="java.lang.Long" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey> 
+    insert into cwl_monthly_bill (id, phone, query_month, 
+      query_date, is_current_month, product_name, 
+      balance, real_cost, base_cost, 
+      voice_cost, sms_cost, network_cost, 
+      vas_cost, represent_cost, repair_cost, 
+      favorable_cost, third_part_pay, other_pay, 
+      recharge, fore_capital_back, fore_presenter_back, 
+      other_recharge)
+    values (#{id,jdbcType=BIGINT}, #{phone,jdbcType=CHAR}, #{queryMonth,jdbcType=CHAR}, 
+      #{queryDate,jdbcType=DATE}, #{isCurrentMonth,jdbcType=CHAR}, #{productName,jdbcType=VARCHAR}, 
+      #{balance,jdbcType=DECIMAL}, #{realCost,jdbcType=DECIMAL}, #{baseCost,jdbcType=DECIMAL}, 
+      #{voiceCost,jdbcType=DECIMAL}, #{smsCost,jdbcType=DECIMAL}, #{networkCost,jdbcType=DECIMAL}, 
+      #{vasCost,jdbcType=DECIMAL}, #{representCost,jdbcType=DECIMAL}, #{repairCost,jdbcType=DECIMAL}, 
+      #{favorableCost,jdbcType=DECIMAL}, #{thirdPartPay,jdbcType=DECIMAL}, #{otherPay,jdbcType=DECIMAL}, 
+      #{recharge,jdbcType=DECIMAL}, #{foreCapitalBack,jdbcType=DECIMAL}, #{forePresenterBack,jdbcType=DECIMAL}, 
+      #{otherRecharge,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yeedun.chinamobile.model.MonthlyBill">
+    insert into cwl_monthly_bill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="queryMonth != null">
+        query_month,
+      </if>
+      <if test="queryDate != null">
+        query_date,
+      </if>
+      <if test="isCurrentMonth != null">
+        is_current_month,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="balance != null">
+        balance,
+      </if>
+      <if test="realCost != null">
+        real_cost,
+      </if>
+      <if test="baseCost != null">
+        base_cost,
+      </if>
+      <if test="voiceCost != null">
+        voice_cost,
+      </if>
+      <if test="smsCost != null">
+        sms_cost,
+      </if>
+      <if test="networkCost != null">
+        network_cost,
+      </if>
+      <if test="vasCost != null">
+        vas_cost,
+      </if>
+      <if test="representCost != null">
+        represent_cost,
+      </if>
+      <if test="repairCost != null">
+        repair_cost,
+      </if>
+      <if test="favorableCost != null">
+        favorable_cost,
+      </if>
+      <if test="thirdPartPay != null">
+        third_part_pay,
+      </if>
+      <if test="otherPay != null">
+        other_pay,
+      </if>
+      <if test="recharge != null">
+        recharge,
+      </if>
+      <if test="foreCapitalBack != null">
+        fore_capital_back,
+      </if>
+      <if test="forePresenterBack != null">
+        fore_presenter_back,
+      </if>
+      <if test="otherRecharge != null">
+        other_recharge,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="queryMonth != null">
+        #{queryMonth,jdbcType=CHAR},
+      </if>
+      <if test="queryDate != null">
+        #{queryDate,jdbcType=DATE},
+      </if>
+      <if test="isCurrentMonth != null">
+        #{isCurrentMonth,jdbcType=CHAR},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="realCost != null">
+        #{realCost,jdbcType=DECIMAL},
+      </if>
+      <if test="baseCost != null">
+        #{baseCost,jdbcType=DECIMAL},
+      </if>
+      <if test="voiceCost != null">
+        #{voiceCost,jdbcType=DECIMAL},
+      </if>
+      <if test="smsCost != null">
+        #{smsCost,jdbcType=DECIMAL},
+      </if>
+      <if test="networkCost != null">
+        #{networkCost,jdbcType=DECIMAL},
+      </if>
+      <if test="vasCost != null">
+        #{vasCost,jdbcType=DECIMAL},
+      </if>
+      <if test="representCost != null">
+        #{representCost,jdbcType=DECIMAL},
+      </if>
+      <if test="repairCost != null">
+        #{repairCost,jdbcType=DECIMAL},
+      </if>
+      <if test="favorableCost != null">
+        #{favorableCost,jdbcType=DECIMAL},
+      </if>
+      <if test="thirdPartPay != null">
+        #{thirdPartPay,jdbcType=DECIMAL},
+      </if>
+      <if test="otherPay != null">
+        #{otherPay,jdbcType=DECIMAL},
+      </if>
+      <if test="recharge != null">
+        #{recharge,jdbcType=DECIMAL},
+      </if>
+      <if test="foreCapitalBack != null">
+        #{foreCapitalBack,jdbcType=DECIMAL},
+      </if>
+      <if test="forePresenterBack != null">
+        #{forePresenterBack,jdbcType=DECIMAL},
+      </if>
+      <if test="otherRecharge != null">
+        #{otherRecharge,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yeedun.chinamobile.model.MonthlyBill">
+    update cwl_monthly_bill
+    <set>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="queryMonth != null">
+        query_month = #{queryMonth,jdbcType=CHAR},
+      </if>
+      <if test="queryDate != null">
+        query_date = #{queryDate,jdbcType=DATE},
+      </if>
+      <if test="isCurrentMonth != null">
+        is_current_month = #{isCurrentMonth,jdbcType=CHAR},
+      </if>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null">
+        balance = #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="realCost != null">
+        real_cost = #{realCost,jdbcType=DECIMAL},
+      </if>
+      <if test="baseCost != null">
+        base_cost = #{baseCost,jdbcType=DECIMAL},
+      </if>
+      <if test="voiceCost != null">
+        voice_cost = #{voiceCost,jdbcType=DECIMAL},
+      </if>
+      <if test="smsCost != null">
+        sms_cost = #{smsCost,jdbcType=DECIMAL},
+      </if>
+      <if test="networkCost != null">
+        network_cost = #{networkCost,jdbcType=DECIMAL},
+      </if>
+      <if test="vasCost != null">
+        vas_cost = #{vasCost,jdbcType=DECIMAL},
+      </if>
+      <if test="representCost != null">
+        represent_cost = #{representCost,jdbcType=DECIMAL},
+      </if>
+      <if test="repairCost != null">
+        repair_cost = #{repairCost,jdbcType=DECIMAL},
+      </if>
+      <if test="favorableCost != null">
+        favorable_cost = #{favorableCost,jdbcType=DECIMAL},
+      </if>
+      <if test="thirdPartPay != null">
+        third_part_pay = #{thirdPartPay,jdbcType=DECIMAL},
+      </if>
+      <if test="otherPay != null">
+        other_pay = #{otherPay,jdbcType=DECIMAL},
+      </if>
+      <if test="recharge != null">
+        recharge = #{recharge,jdbcType=DECIMAL},
+      </if>
+      <if test="foreCapitalBack != null">
+        fore_capital_back = #{foreCapitalBack,jdbcType=DECIMAL},
+      </if>
+      <if test="forePresenterBack != null">
+        fore_presenter_back = #{forePresenterBack,jdbcType=DECIMAL},
+      </if>
+      <if test="otherRecharge != null">
+        other_recharge = #{otherRecharge,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yeedun.chinamobile.model.MonthlyBill">
+    update cwl_monthly_bill
+    set phone = #{phone,jdbcType=CHAR},
+      query_month = #{queryMonth,jdbcType=CHAR},
+      query_date = #{queryDate,jdbcType=DATE},
+      is_current_month = #{isCurrentMonth,jdbcType=CHAR},
+      product_name = #{productName,jdbcType=VARCHAR},
+      balance = #{balance,jdbcType=DECIMAL},
+      real_cost = #{realCost,jdbcType=DECIMAL},
+      base_cost = #{baseCost,jdbcType=DECIMAL},
+      voice_cost = #{voiceCost,jdbcType=DECIMAL},
+      sms_cost = #{smsCost,jdbcType=DECIMAL},
+      network_cost = #{networkCost,jdbcType=DECIMAL},
+      vas_cost = #{vasCost,jdbcType=DECIMAL},
+      represent_cost = #{representCost,jdbcType=DECIMAL},
+      repair_cost = #{repairCost,jdbcType=DECIMAL},
+      favorable_cost = #{favorableCost,jdbcType=DECIMAL},
+      third_part_pay = #{thirdPartPay,jdbcType=DECIMAL},
+      other_pay = #{otherPay,jdbcType=DECIMAL},
+      recharge = #{recharge,jdbcType=DECIMAL},
+      fore_capital_back = #{foreCapitalBack,jdbcType=DECIMAL},
+      fore_presenter_back = #{forePresenterBack,jdbcType=DECIMAL},
+      other_recharge = #{otherRecharge,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

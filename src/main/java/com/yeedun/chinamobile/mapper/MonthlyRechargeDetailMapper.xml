@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yeedun.chinamobile.dao.MonthlyRechargeDetailMapper">
+  <resultMap id="BaseResultMap" type="com.yeedun.chinamobile.model.MonthlyRechargeDetail">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="phone" jdbcType="CHAR" property="phone" />
+    <result column="query_month" jdbcType="CHAR" property="queryMonth" />
+    <result column="query_date" jdbcType="DATE" property="queryDate" />
+    <result column="recharge_date" jdbcType="DATE" property="rechargeDate" />
+    <result column="recharge_way" jdbcType="VARCHAR" property="rechargeWay" />
+    <result column="capital" jdbcType="DECIMAL" property="capital" />
+    <result column="presenter" jdbcType="DECIMAL" property="presenter" />
+    <result column="favorable" jdbcType="VARCHAR" property="favorable" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, phone, query_month, query_date, recharge_date, recharge_way, capital, presenter, 
+    favorable, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cwl_monthly_recharge_detail
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cwl_monthly_recharge_detail
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yeedun.chinamobile.model.MonthlyRechargeDetail">
+    insert into cwl_monthly_recharge_detail (id, phone, query_month, 
+      query_date, recharge_date, recharge_way, 
+      capital, presenter, favorable, 
+      remark)
+    values (#{id,jdbcType=BIGINT}, #{phone,jdbcType=CHAR}, #{queryMonth,jdbcType=CHAR}, 
+      #{queryDate,jdbcType=DATE}, #{rechargeDate,jdbcType=DATE}, #{rechargeWay,jdbcType=VARCHAR}, 
+      #{capital,jdbcType=DECIMAL}, #{presenter,jdbcType=DECIMAL}, #{favorable,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yeedun.chinamobile.model.MonthlyRechargeDetail">
+    insert into cwl_monthly_recharge_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="queryMonth != null">
+        query_month,
+      </if>
+      <if test="queryDate != null">
+        query_date,
+      </if>
+      <if test="rechargeDate != null">
+        recharge_date,
+      </if>
+      <if test="rechargeWay != null">
+        recharge_way,
+      </if>
+      <if test="capital != null">
+        capital,
+      </if>
+      <if test="presenter != null">
+        presenter,
+      </if>
+      <if test="favorable != null">
+        favorable,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="queryMonth != null">
+        #{queryMonth,jdbcType=CHAR},
+      </if>
+      <if test="queryDate != null">
+        #{queryDate,jdbcType=DATE},
+      </if>
+      <if test="rechargeDate != null">
+        #{rechargeDate,jdbcType=DATE},
+      </if>
+      <if test="rechargeWay != null">
+        #{rechargeWay,jdbcType=VARCHAR},
+      </if>
+      <if test="capital != null">
+        #{capital,jdbcType=DECIMAL},
+      </if>
+      <if test="presenter != null">
+        #{presenter,jdbcType=DECIMAL},
+      </if>
+      <if test="favorable != null">
+        #{favorable,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yeedun.chinamobile.model.MonthlyRechargeDetail">
+    update cwl_monthly_recharge_detail
+    <set>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="queryMonth != null">
+        query_month = #{queryMonth,jdbcType=CHAR},
+      </if>
+      <if test="queryDate != null">
+        query_date = #{queryDate,jdbcType=DATE},
+      </if>
+      <if test="rechargeDate != null">
+        recharge_date = #{rechargeDate,jdbcType=DATE},
+      </if>
+      <if test="rechargeWay != null">
+        recharge_way = #{rechargeWay,jdbcType=VARCHAR},
+      </if>
+      <if test="capital != null">
+        capital = #{capital,jdbcType=DECIMAL},
+      </if>
+      <if test="presenter != null">
+        presenter = #{presenter,jdbcType=DECIMAL},
+      </if>
+      <if test="favorable != null">
+        favorable = #{favorable,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yeedun.chinamobile.model.MonthlyRechargeDetail">
+    update cwl_monthly_recharge_detail
+    set phone = #{phone,jdbcType=CHAR},
+      query_month = #{queryMonth,jdbcType=CHAR},
+      query_date = #{queryDate,jdbcType=DATE},
+      recharge_date = #{rechargeDate,jdbcType=DATE},
+      recharge_way = #{rechargeWay,jdbcType=VARCHAR},
+      capital = #{capital,jdbcType=DECIMAL},
+      presenter = #{presenter,jdbcType=DECIMAL},
+      favorable = #{favorable,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
